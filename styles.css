@@ -135,16 +135,11 @@ h2 {
   display: inline-block;
   position: absolute;
   left: 30%;
- 
-
+  top: 7%;
   bottom: 5%;
 }
 
-.main-content-image{
-  position: relative;
-  left: 25%;
-  top: 7%;
-}
+
 
 #Horntail-image{
   height: 400px;
@@ -174,9 +169,13 @@ h2 {
 #main-content-message {
   padding-bottom: 15px;
   text-align: center;
+  background-color: rgb(201, 195, 195, 0.3);
+
 }
 
-.library-background {
+/* BACKGROUNDS */
+/* library background */
+.background-1 {
   background-image: url("assets/images/library.jpg");
    background-color: #bdb5b5;
    height: 100vh; 
@@ -186,9 +185,83 @@ h2 {
    background-attachment: fixed;
    position: relative;
    margin: 0;
-  
 }
 
+/* pumpkin great hall */
+.background-2 {
+  background-image: url("assets/images/pumpkingreathall.jpg");
+   background-color: #bdb5b5;
+   height: 100vh; 
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
+   position: relative;
+   margin: 0;
+}
+
+/* slytherin common room */
+.background-3 {
+  background-image: url("assets/images/slytherincommonroom.jpg");
+   background-color: #000000;
+   height: 100vh; 
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
+   position: relative;
+   margin: 0;
+}
+
+.background-4 {
+  background-image: url("assets/images/gryffindorcommonroom.jpg");
+   background-color: #000000;
+   height: 100vh; 
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
+   position: relative;
+   margin: 0;
+}
+
+.background-5 {
+  background-image: url("assets/images/forbiddenforrest.jpeg");
+   background-color: #000000;
+   height: 100vh; 
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
+   position: relative;
+   margin: 0;
+}
+
+.background-6 {
+  background-image: url("assets/images/corridor.jpg");
+   background-color: #000000;
+   height: 100vh; 
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
+   position: relative;
+   margin: 0;
+}
+
+.background-7 {
+  background-image: url("assets/images/greathall.jpg");
+   background-color: #030303;
+   height: 100vh; 
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
+   position: relative;
+   margin: 0;
+}
+
+/* Potions */
 #potions {
   position: fixed;
   right: 10px;
@@ -200,8 +273,3 @@ h2 {
    float: right;
  }
 
-#basilisk-image img {
-  height: 400px;
-  content: url("assets/images/basilisk.png")
-
-}

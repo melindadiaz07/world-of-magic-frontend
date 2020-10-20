@@ -106,7 +106,6 @@ function welcomeMessage(){
 
 function renderEncounter(event, user, house){
   event.preventDefault()
-  // renderBackground()
   // renderSpells()
   // renderCreature()
   // renderLives(user)
@@ -115,19 +114,48 @@ function renderEncounter(event, user, house){
   .then(res => res.json())
   .then(creatureArray => {
     let randomCreature = creatureArray[Math.floor(Math.random()*creatureArray.length)]
-    renderCreature(randomCreature)
+    renderCreatureAndBackground(randomCreature)
   });
+  
 }
 
-function renderCreature(creature){
-  // console.log(creature)
+function renderCreatureAndBackground(creature){
+ 
+  let randomBackground = Math.floor(Math.random()*7 +1)
   mainContentImageDiv.id = `${creature.name}-image`
-  console.log(creature.name)
+  bodyBackground.className = `background-${randomBackground}`
 
-  /* change content to monster image
-    display their health
-    display their name "You encountered a dementor!" */
+  let locationName
+  switch (randomBackground) {
+    case 1: 
+      locationName = "the Library"
+      break;
+    case 2:
+      locationName = "the Great Hall"
+      break;
+    case 3:
+      locationName = "the Slytherin Common Room"
+      break; 
+    case 4:
+      locationName = "the Gryffindor Common Room"
+      break;
+    case 5:
+      locationName = "the Forbidden Forrest"
+      break;
+    case 6:
+      locationName = "the corridors"
+      break;
+    case 7:
+      locationName = "the Great Hall"
   }
+
+  
+  mainContentMessage.innerText = `You found a ${creature.name} in ${locationName}`
+  
+}
+
+
+
 
 function creatureEncounterLogic(user, house){
   // let creatureHealth = creature.health
