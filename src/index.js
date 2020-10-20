@@ -1,6 +1,7 @@
 const creaturesURL = "http://localhost:3000/creatures"
 const usersURL = "http://localhost:3000/users"
 const housesURL = "http://localhost:3000/houses"
+const spellsURL = "http://localhost:3000/spells"
 
 const mainContentDiv = document.querySelector('#main-content')
 const mainContentMessage = document.querySelector("#main-content-message")
@@ -106,8 +107,7 @@ function welcomeMessage(){
 
 function renderEncounter(event, user, house){
   event.preventDefault()
-  // renderSpells()
-  // renderCreature()
+  
   // renderLives(user)
   // creatureEncounterLogic(user, house)
   fetch(creaturesURL)
@@ -117,7 +117,27 @@ function renderEncounter(event, user, house){
     renderCreatureAndBackground(randomCreature)
   });
   
+  fetch(spellsURL)
+  .then(res => res.json())
+  .then(spellArray => {
+
+    let spellIndexArray = []
+    for (let i = 0; i < 5; i++) {
+      let randomSpellIndex = Math.floor(Math.random()*spellArray.length)
+      spellIndexArray.push(randomSpellIndex)
+    }
+    let usersFiveSpells = []
+    spellIndexArray.forEach(index => {
+      usersFiveSpells.push(spellArray[index].name)
+    })
+      renderSpells(usersFiveSpells)
+
+    // create array of 5 random indexes
+    // check if numbers are unique
+    // if not, generate new ones
+  })
 }
+
 
 function renderCreatureAndBackground(creature){
  
@@ -148,12 +168,12 @@ function renderCreatureAndBackground(creature){
     case 7:
       locationName = "the Great Hall"
   }
-
-  
   mainContentMessage.innerText = `You found a ${creature.name} in ${locationName}`
-  
 }
 
+function renderSpells(spells){
+console.log(spells)
+}
 
 
 
