@@ -273,3 +273,10 @@ h2 {
    float: right;
  }
 
+
+ /* Spells */
+
+ #spells-div{
+   background-color: white;
+   display: inline-block;
+ }

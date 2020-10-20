@@ -73,6 +73,7 @@ function renderUserList(user, house){
   userLink.innerText = user.name
   userLink.id = `character-${firstName}-link`
   userLink.href = '#'
+  userLink.className = 'character-button'
   
 
   document.querySelector(`#character-${firstName}-link`).addEventListener("click", (event) => {
@@ -107,7 +108,16 @@ function welcomeMessage(){
 
 function renderEncounter(event, user, house){
   event.preventDefault()
-  
+  let characterButtons = document.querySelectorAll('.character-button')
+  characterButtons.forEach(characterButton =>{
+    characterButton.hidden = true;
+  })
+  let dropdownContent = document.querySelectorAll(".dropdown-content")
+  dropdownContent.forEach(singleDropdown =>{
+    singleDropdown.classList.remove("dropdown-content")
+  })
+
+
   // renderLives(user)
   // creatureEncounterLogic(user, house)
   fetch(creaturesURL)
@@ -172,7 +182,17 @@ function renderCreatureAndBackground(creature){
 }
 
 function renderSpells(spells){
-console.log(spells)
+// console.log(spells)
+
+let spellUl = document.querySelector("#spells-ul");
+spells.forEach(spell => {
+  let spellPTag = document.createElement("p")
+  spellPTag.innerText = spell
+  console.log(spell)
+  spellUl.append(spellPTag)
+})
+
+
 }
 
 
