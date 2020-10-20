@@ -1,4 +1,125 @@
-body {
-  cursor: url(https://media1.giphy.com/media/YPmtE3dP09knBpVDRq/giphy.gif?cid=ecf05e474dyqlxmfh8grcpmbxi8f5brq1a00u94yf61ie4ji&rid=giphy.gif);
+@font-face {
+  font-family: 'boltfont';
+  src: url("font/HarryP1.TTF");
 }
 
+@font-face {
+  font-family: 'lumosfont';
+  src: url("font/LUMOS.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'beastsfont';
+  src: url("font/FantasticBeasts.ttf");
+}
+
+@font-face {
+  font-family: 'crimesfont';
+  src: url("font/crimes.otf");
+}
+
+@font-face {
+  font-family: 'prophetfont';
+  src: url("font/jenna.ttf");
+}
+
+body {
+  font-family: boltfont;
+  background-image: url("assets/images/willow.jpg");
+}
+
+#top-bar {
+  display: inline-block;
+  background-color: rgb(201, 195, 195, 0.3);
+  
+}
+
+#header {
+  padding-left: 25px;
+}
+
+h2 {
+  /* text-transform: uppercase; */
+  font-family: crimesfont;
+  
+}
+
+.points-p {
+  font-size: 20px;
+}
+
+.new-submit-button {
+  font-family: boltfont;
+}
+
+.dropbtn {
+  background-color:grey;
+  color: white;
+  padding: 5px 30px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  font-family: boltfont;
+  border-radius: 5%;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  font-family: lumosfont;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 10px;
+  text-decoration: none;
+  display: block;
+
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content li:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: rgb(39, 34, 34);
+}
+
+#new-user-form {
+  padding-top: 30px;
+}
+
+
+/* background location classes */
+
+#library-background {
+  background-image: "assets/library.jpg"
+}
+
+
+#main-content {
+  font-size: 40px;
+  background-color: rgb(201, 195, 195, 0.3);
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  padding: 20px;
+}

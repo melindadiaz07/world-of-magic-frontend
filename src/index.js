@@ -2,12 +2,16 @@ const creaturesURL = "http://localhost:3000/creatures"
 const usersURL = "http://localhost:3000/users"
 const housesURL = "http://localhost:3000/houses"
 
+const mainContentDiv = document.querySelector('#main-content')
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   getHouses()
-  document.querySelector(".new-submit-button").addEventListener('click', () => {
+  document.querySelector(".new-submit-button").addEventListener('click', (event) => {
     newUserForm(event)
   });
+  welcomeMessage()
 })
 
 function getHouses(){
@@ -31,11 +35,24 @@ function renderHouse(house){
 
   let pointsEl = document.createElement('p')
   pointsEl.innerText = `Points: ${house.points}`
+  pointsEl.className = "points-p"
+  pointsEl.id = `${house.name}-points`
   houseDiv.append(pointsEl)
 
-  let houseUserUl = document.createElement('ul')
-  houseUserUl.id = `ul-${house.id}-house`
-  houseDiv.append(houseUserUl)
+  let dropdownDiv = document.createElement('div')
+  dropdownDiv.className = "dropdown"
+  houseDiv.append(dropdownDiv)
+
+  let houseUserList = document.createElement('div')
+  houseUserList.id = `ul-${house.id}-house`
+  houseUserList.className = "dropdown-content"
+
+  let dropdownBtn = document.createElement('button')
+  dropdownBtn.className = 'dropbtn'
+  dropdownBtn.innerText = "Students"
+
+  dropdownDiv.append(dropdownBtn)
+  dropdownDiv.append(houseUserList)
 
   house.users.forEach(singleUser => {
     renderUserList(singleUser, house)
@@ -43,11 +60,14 @@ function renderHouse(house){
 }
 
 function renderUserList(user, house){
-  let userUl = document.querySelector(`#ul-${house.id}-house`)
-  // console.log(userUl)
-  let userLi = document.createElement("li")
-  userUl.append(userLi)
-  userLi.innerText = user.name
+  let userListDiv = document.querySelector(`#ul-${house.id}-house`)
+  
+  let userLink = document.createElement("a")
+  userListDiv.append(userLink)
+  userLink.innerText = user.name
+  userLink.href = '#'
+
+  // document.addEventListener()
 }
 
 function newUserForm(event){
@@ -67,4 +87,12 @@ function newUserForm(event){
     newUserLi.innerText = newUser.name
     houseUl.append(newUserLi)
   });
+}
+
+function welcomeMessage(){
+
+  let welcomeEl = document.createElement('p')
+  welcomeEl.innerText = "Put welcome message here"
+  mainContentDiv.append(welcomeEl)
+
 }
