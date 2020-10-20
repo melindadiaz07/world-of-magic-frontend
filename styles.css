@@ -44,7 +44,7 @@ body {
 #top-bar {
   display: inline-block;
   background-color: rgb(201, 195, 195, 0.3);
-  
+  height: 100%;
 }
 
 #header {
@@ -63,6 +63,7 @@ h2 {
 
 .new-submit-button {
   font-family: boltfont;
+  font-size: 15px;
 }
 
 .dropbtn {
@@ -116,7 +117,21 @@ h2 {
 }
 
 #new-user-form {
-  padding-top: 30px;
+  padding: 30px;
+  font-size: 20px;
+
+}
+
+#new-user-form button {
+  position: absolute;
+}
+
+#sort-text {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 5px 5px 0;
+  padding-right: 3px;
+  
 }
 
 #main-content-image-div{
@@ -278,6 +293,24 @@ h2 {
  /* Spells */
 
  #spells-div{
-   background-color: white;
    display: inline-block;
+   position: fixed;
+   bottom: 15px;
+   margin-left: 50px;
+   background-color: rgb(201, 195, 195, 0.3)
+ }
+
+ .spell-item {
+   font-size: 30px;
+   color: white;
+   text-shadow: 1px 1px #0c0c0c;
+   padding: 0 25px;
+   font-family: boltfont;
+ }
+
+ #form-sorting-hat {
+   height: 30px;
+   padding-top: 5px;
+    margin-top: -10px;
+    position: relative;
  }
