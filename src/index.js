@@ -96,3 +96,6 @@ function welcomeMessage(){
   mainContentDiv.append(welcomeEl)
 
 }
+
+
+if monster 
