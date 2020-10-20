@@ -7,7 +7,7 @@ const mainContentDiv = document.querySelector('#main-content')
 const mainContentMessage = document.querySelector("#main-content-message")
 const mainContentImageDiv = document.querySelector("#main-content-image-div")
 const bodyBackground = document.querySelector('.body-content')
-
+const spellUl = document.querySelector("#spells-ul")
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -16,14 +16,17 @@ document.addEventListener("DOMContentLoaded", () => {
     newUserForm(event)
   });
   welcomeMessage()
-  
 })
+
+
 
 function getHouses(){
   fetch(housesURL)
   .then(res => res.json())
   .then(houseData => houseData.forEach(house => renderHouse(house)))
 }
+
+
 
 function renderHouse(house){
   
@@ -76,11 +79,11 @@ function renderUserList(user, house){
   userLink.href = '#'
   userLink.className = 'character-button'
   
-
   document.querySelector(`#character-${firstName}-link`).addEventListener("click", (event) => {
-    renderEncounter(event, user, house)
+    renderFirstEncounter(event, user, house)
   })
 }
+
 
 function newUserForm(event){
   event.preventDefault();
@@ -102,29 +105,32 @@ function newUserForm(event){
     houseUl.append(newUserA)
     newUserA.className = "character-button"
    
-    
     fetch(housesURL+`/${newHouse}`)
     .then(res => res.json())
     .then(house => {
-      renderEncounter(event, newUser, house)
+      renderFirstEncounter(event, newUser, house)
     })
-  
   });
-  
-
 }
+
 
 function welcomeMessage(){
   mainContentMessage.innerText = "Put welcome message here"
 }
 
-function renderEncounter(event, user, house){
+
+
+function renderFirstEncounter(event, user, house){
   event.preventDefault()
+
+  let lives = user.lives
+  
+
+  renderPotions(user.lives)
 
   let oldForm = document.querySelector('#form-form')
   oldForm.hidden = true
   
-console.log(user, house, house.points)
   let characterButtons = document.querySelectorAll('.character-button')
   characterButtons.forEach(characterButton =>{
     characterButton.hidden = true;
@@ -134,40 +140,19 @@ console.log(user, house, house.points)
     button.hidden = true
   })
 
-
-  // renderLives(user)
-  // creatureEncounterLogic(user, house)
   fetch(creaturesURL)
   .then(res => res.json())
   .then(creatureArray => {
     let randomCreature = creatureArray[Math.floor(Math.random()*creatureArray.length)]
     renderCreatureAndBackground(randomCreature)
-  });
   
-  fetch(spellsURL)
-  .then(res => res.json())
-  .then(spellArray => {
-
-    let spellIndexArray = []
-    for (let i = 0; i < 5; i++) {
-      let randomSpellIndex = Math.floor(Math.random()*spellArray.length)
-      spellIndexArray.push(randomSpellIndex)
-    }
-    let usersFiveSpells = []
-    spellIndexArray.forEach(index => {
-      usersFiveSpells.push(spellArray[index].name)
-    })
-      renderSpells(usersFiveSpells)
-
-    // create array of 5 random indexes
-    // check if numbers are unique
-    // if not, generate new ones
+      creatureEncounterLogic(lives, house, randomCreature)
   })
-}
+};
+  
 
 
 function renderCreatureAndBackground(creature){
- 
   let randomBackground = Math.floor(Math.random()*7 +1)
   mainContentImageDiv.id = `${creature.name}-image`
   bodyBackground.className = `background-${randomBackground}`
@@ -198,30 +183,71 @@ function renderCreatureAndBackground(creature){
   mainContentMessage.innerText = `You found a ${creature.name} in ${locationName}`
 }
 
-function renderSpells(spells){
-// console.log(spells)
 
-let spellUl = document.querySelector("#spells-ul");
-spells.forEach(spell => {
-  let spellPTag = document.createElement("p")
-  spellPTag.innerText = spell
-  console.log(spell)
-  spellUl.append(spellPTag)
-})
-
-
+function renderPotions(lives){
+  for (let i = 1; i <= lives; i++){
+    let potion = document.querySelector(`#potion-${i}`)
+    potion.hidden = false
+  }
 }
 
 
+function creatureEncounterLogic(user, house, creature){
+  
+  let lives = user.lives
+  let housePoints = house.points
+  let creatureHealth = creature.creature
+  let creaturePoints = creature.points
 
-function creatureEncounterLogic(user, house){
-  // let creatureHealth = creature.health
+  fetch(spellsURL)
+  .then(res => res.json())
+  .then(spellArray => {
 
-  // if creature's health = 0 
-}
+    let spellIndexArray = []
+    for (let i = 0; i < 5; i++) {
+      let randomSpellIndex = Math.floor(Math.random()*spellArray.length)
+      spellIndexArray.push(randomSpellIndex)
+    }
+    let usersSpells = []
+    spellIndexArray.forEach(index => {
+      usersSpells.push(spellArray[index])
+    })
+      renderSpells(usersSpells)
+      
+    })
+
+    function renderSpells(spells){
+      
+      spellUl.hidden = false
+      
+      spells.forEach(spell => {
+        let spellPTag = document.createElement("p")
+        spellPTag.innerText = spell.name
+        spellPTag.id = `spell-item-${spell.id}`
+        spellPTag.className = 'spell-item'
+        spellPTag.dataset.damage = `${spell.damage}`
+        spellUl.append(spellPTag)
+        spellPTag.addEventListener('click', (event) => {
+          castSpellOne(event)
+        })
+      }) 
+      
+  }
 
   
-// function renderLives(user){
-//   show number of potions based on lives
-//   case list? .hidden attribute?
+    function castSpellOne(event){
+      event.preventDefault()
+
+      let damage = event.target.dataset.damage
+
+      spellUl.hidden = true
+
+    
+  }
+
+  
+
+// function castSpell(event){
+//   console.log(event)
 // }
+}
