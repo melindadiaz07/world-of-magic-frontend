@@ -64,6 +64,7 @@ function renderHouse(house){
   });
 }
 
+
 function renderUserList(user, house){
   let userListDiv = document.querySelector(`#ul-${house.id}-house`)
   let firstName = user.name.replace(/\s+/g, '')
@@ -85,7 +86,9 @@ function newUserForm(event){
   event.preventDefault();
   let newUserName = document.querySelector(".new-user-name").value
   let newHouse = Math.floor(Math.random()*4 +1)
-  
+
+  document.querySelector("#form-form").reset()
+
   fetch(usersURL, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
@@ -97,24 +100,38 @@ function newUserForm(event){
     let newUserA = document.createElement("a")
     newUserA.innerText = newUser.name
     houseUl.append(newUserA)
+    newUserA.className = "character-button"
+   
+    
+    fetch(housesURL+`/${newHouse}`)
+    .then(res => res.json())
+    .then(house => {
+      renderEncounter(event, newUser, house)
+    })
+  
   });
+  
+
 }
 
 function welcomeMessage(){
-
   mainContentMessage.innerText = "Put welcome message here"
- 
 }
 
 function renderEncounter(event, user, house){
   event.preventDefault()
+
+  let oldForm = document.querySelector('#form-form')
+  oldForm.hidden = true
+  
+console.log(user, house, house.points)
   let characterButtons = document.querySelectorAll('.character-button')
   characterButtons.forEach(characterButton =>{
     characterButton.hidden = true;
   })
-  let dropdownContent = document.querySelectorAll(".dropdown-content")
-  dropdownContent.forEach(singleDropdown =>{
-    singleDropdown.classList.remove("dropdown-content")
+  let dropButtons = document.querySelectorAll(".dropbtn")
+  dropButtons.forEach(button =>{
+    button.hidden = true
   })
 
 
