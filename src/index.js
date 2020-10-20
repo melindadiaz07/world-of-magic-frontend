@@ -3,6 +3,9 @@ const usersURL = "http://localhost:3000/users"
 const housesURL = "http://localhost:3000/houses"
 
 const mainContentDiv = document.querySelector('#main-content')
+const mainContentMessage = document.querySelector("#main-content-message")
+const mainContentImage = document.querySelector("#main-content-image")
+const bodyBackground = document.querySelector('.body-content')
 
 
 
@@ -61,13 +64,18 @@ function renderHouse(house){
 
 function renderUserList(user, house){
   let userListDiv = document.querySelector(`#ul-${house.id}-house`)
+  let firstName = user.name.replace(/\s+/g, '')
   
   let userLink = document.createElement("a")
   userListDiv.append(userLink)
   userLink.innerText = user.name
+  userLink.id = `character-${firstName}-link`
   userLink.href = '#'
+  
 
-  // document.addEventListener()
+  document.querySelector(`#character-${firstName}-link`).addEventListener("click", (event) => {
+    startGame(event, user, house)
+  })
 }
 
 function newUserForm(event){
@@ -83,19 +91,33 @@ function newUserForm(event){
   .then(res => res.json())
   .then(newUser => {
     let houseUl = document.querySelector(`#ul-${newHouse}-house`)
-    let newUserLi = document.createElement("li")
-    newUserLi.innerText = newUser.name
-    houseUl.append(newUserLi)
+    let newUserA = document.createElement("a")
+    newUserA.innerText = newUser.name
+    houseUl.append(newUserA)
   });
 }
 
 function welcomeMessage(){
 
-  let welcomeEl = document.createElement('p')
-  welcomeEl.innerText = "Put welcome message here"
-  mainContentDiv.append(welcomeEl)
+  mainContentMessage.innerText = "Put welcome message here"
+  mainContentImage.src = "assets/images/dementor.png"
+ 
+}
 
+function startGame(event, user, house){
+  event.preventDefault()
+
+  renderLives(user)
+}
+
+<<<<<<< HEAD
 }
 
 
 if monster 
+=======
+function renderLives(user){
+  // show number of potions based on lives
+  // case list? .hidden attribute?
+}
+>>>>>>> f247b86dd0c5189188d33da5fb1caab42d6656ab
