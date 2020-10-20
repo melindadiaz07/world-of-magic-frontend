@@ -4,7 +4,7 @@ const housesURL = "http://localhost:3000/houses"
 
 const mainContentDiv = document.querySelector('#main-content')
 const mainContentMessage = document.querySelector("#main-content-message")
-const mainContentImage = document.querySelector("#main-content-image")
+const mainContentImageDiv = document.querySelector("#main-content-image-div")
 const bodyBackground = document.querySelector('.body-content')
 
 
@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     newUserForm(event)
   });
   welcomeMessage()
+  
 })
 
 function getHouses(){
@@ -74,7 +75,7 @@ function renderUserList(user, house){
   
 
   document.querySelector(`#character-${firstName}-link`).addEventListener("click", (event) => {
-    startGame(event, user, house)
+    renderEncounter(event, user, house)
   })
 }
 
@@ -100,24 +101,42 @@ function newUserForm(event){
 function welcomeMessage(){
 
   mainContentMessage.innerText = "Put welcome message here"
-  mainContentImage.src = "assets/images/dementor.png"
  
 }
 
-function startGame(event, user, house){
+function renderEncounter(event, user, house){
   event.preventDefault()
-
-  renderLives(user)
+  // renderBackground()
+  // renderSpells()
+  // renderCreature()
+  // renderLives(user)
+  // creatureEncounterLogic(user, house)
+  fetch(creaturesURL)
+  .then(res => res.json())
+  .then(creatureArray => {
+    let randomCreature = creatureArray[Math.floor(Math.random()*creatureArray.length)]
+    renderCreature(randomCreature)
+  });
 }
 
-<<<<<<< HEAD
+function renderCreature(creature){
+  // console.log(creature)
+  mainContentImageDiv.id = `${creature.name}-image`
+  console.log(creature.name)
+
+  /* change content to monster image
+    display their health
+    display their name "You encountered a dementor!" */
+  }
+
+function creatureEncounterLogic(user, house){
+  // let creatureHealth = creature.health
+
+  // if creature's health = 0 
 }
 
-
-if monster 
-=======
-function renderLives(user){
-  // show number of potions based on lives
-  // case list? .hidden attribute?
-}
->>>>>>> f247b86dd0c5189188d33da5fb1caab42d6656ab
+  
+// function renderLives(user){
+//   show number of potions based on lives
+//   case list? .hidden attribute?
+// }

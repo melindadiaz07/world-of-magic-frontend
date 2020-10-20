@@ -118,10 +118,20 @@ h2 {
   padding-top: 30px;
 }
 
+#main-content-image-div{
+  height: 400px;
+  position: relative;
+  left: 25%;
+  top: 7%;
+  content: url("assets/images/dumbledore.gif")
+}
+
 
 #main-content {
+  height: 650px;
+  width: 725px;
   font-size: 30px;
-  background-color: rgb(201, 195, 195, 0.3);
+  /* background-color: rgb(201, 195, 195, 0.3); */
   display: inline-block;
   position: absolute;
   left: 30%;
@@ -130,8 +140,35 @@ h2 {
   bottom: 5%;
 }
 
-#main-content-image {
-  height: 500px;
+.main-content-image{
+  position: relative;
+  left: 25%;
+  top: 7%;
+}
+
+#Horntail-image{
+  height: 400px;
+  content: url("assets/images/horntail.png")
+}
+
+#Dementor-image{
+  height: 400px;
+  content: url("assets/images/dementor.png")
+}
+
+#Werewolf-image{
+  height: 400px;
+  content: url("assets/images/werewolf.png")
+}
+
+#Cockatrice-image{
+  height: 400px;
+  content: url("assets/images/cockatrice.png")
+}
+
+#Basilisk-image{
+  height: 400px;
+  content: url("assets/images/basilisk.png")
 }
 
 #main-content-message {
@@ -163,3 +200,8 @@ h2 {
    float: right;
  }
 
+#basilisk-image img {
+  height: 400px;
+  content: url("assets/images/basilisk.png")
+
+}
