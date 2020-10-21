@@ -392,7 +392,7 @@ creatureWonButton.innerText = `Use your ${item} to keep searching for creatures.
       })
     })
   }
-    
+}
 }
 
 function userDies(){
