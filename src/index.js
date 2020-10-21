@@ -80,7 +80,7 @@ function renderUserList(user, house){
   userLink.className = 'character-button'
   
   document.querySelector(`#character-${firstName}-link`).addEventListener("click", (event) => {
-    renderFirstEncounter(event, user, house)
+    renderEncounter(event, user, house)
   })
 }
 
@@ -108,7 +108,7 @@ function newUserForm(event){
     fetch(housesURL+`/${newHouse}`)
     .then(res => res.json())
     .then(house => {
-      renderFirstEncounter(event, newUser, house)
+      renderEncounter(event, newUser, house)
     })
   });
 }
@@ -120,7 +120,7 @@ function welcomeMessage(){
 
 
 
-function renderFirstEncounter(event, user, house){
+function renderEncounter(event, user, house){
   event.preventDefault()
 
   let lives = user.lives
@@ -146,7 +146,7 @@ function renderFirstEncounter(event, user, house){
     let randomCreature = creatureArray[Math.floor(Math.random()*creatureArray.length)]
     renderCreatureAndBackground(randomCreature)
   
-      creatureEncounterLogic(lives, house, randomCreature)
+      creatureEncounterLogic(user, house, randomCreature)
   })
 };
   
@@ -192,12 +192,17 @@ function renderPotions(lives){
 }
 
 
+// after rendering, start encounter with 3 chances to win
+
 function creatureEncounterLogic(user, house, creature){
   
-  let lives = user.lives
+  lives = user.lives
   let housePoints = house.points
-  let creatureHealth = creature.creature
+  let creatureHealth = creature.health
   let creaturePoints = creature.points
+  let turn = 1
+  let userSpellsList
+
 
   fetch(spellsURL)
   .then(res => res.json())
@@ -212,14 +217,16 @@ function creatureEncounterLogic(user, house, creature){
     spellIndexArray.forEach(index => {
       usersSpells.push(spellArray[index])
     })
-      renderSpells(usersSpells)
+      userSpellsList = usersSpells
+      renderSpells(usersSpells, turn)
       
     })
 
-    function renderSpells(spells){
+
+    function renderSpells(spells, turn){
       
       spellUl.hidden = false
-      
+    
       spells.forEach(spell => {
         let spellPTag = document.createElement("p")
         spellPTag.innerText = spell.name
@@ -227,27 +234,100 @@ function creatureEncounterLogic(user, house, creature){
         spellPTag.className = 'spell-item'
         spellPTag.dataset.damage = `${spell.damage}`
         spellUl.append(spellPTag)
+        
         spellPTag.addEventListener('click', (event) => {
-          castSpellOne(event)
+          castSpells(event)
         })
-      }) 
+      })
+    }
       
-  }
 
   
-    function castSpellOne(event){
+    function castSpells(event){
       event.preventDefault()
 
-      let damage = event.target.dataset.damage
-
-      spellUl.hidden = true
-
+      let turns = 3
     
-  }
+      if (turns == 3) {
+        event.currentTarget.remove()
+        let damage = event.target.dataset.damage
+      creatureHealth = creatureHealth - damage
+        console.log(`spell ${turns}`)
+        return turns--
+      }
 
+      if (turns == 2) {
+        event.currentTarget.remove()
+        let damage = event.target.dataset.damage
+      creatureHealth = creatureHealth - damage
+        console.log(`spell ${turns}`)
+        return turns--
+      }
+
+      if (turns == 1) {
+        event.currentTarget.remove()
+        let damage = event.target.dataset.damage
+      creatureHealth = creatureHealth - damage
+        console.log(`spell ${turns}`)
+        turns--
+      }
+
+      if (turns == 0) {
+        console.log('you lose')
+        // creatureWins()
+      }
+      
+
+      
+
+      
+     
+    //   if (creatureHealth < 0) {
+    //     userWins(creature, house, user)
+    //   }
+     
+
+    //   creatureWins(event, user, house, creature)
+    }
+  }
   
 
-// function castSpell(event){
-//   console.log(event)
-// }
+
+
+
+function creatureWins(event, user, house, creature){
+
+  spellUl.hidden = true
+  // lose one life if creature health isn't 0 by this
+  // fetch patch to update character's lives in backend
+  console.log('you lose')
+  // if user still has lives, show message about magical item they used then
+  // add event listener so user can click on button to continue
+
+  // renderEncounter(event, user, house)
+  // if user loses last life, go to last life function
+    
+}
+
+
+function userWins(creature, house, user){
+
+  let points = creature.points
+  console.log('you win')
+  spellUl.hidden = true
+
+  // fetch patch to update house points in backend
+    // based on creature.points
+
+    // show message "you earned ${points} for ${house} 
+    // by sending the ${creature} back to the forbidden forrest"
+    // create event listner so user clicks to find a new creature - pass event into -
+    // renderEncounter(event, user, house)
+
+}
+
+
+function userDies(){
+  // fetch patch to update house points (lose 100?)
+  // rerender page to front page
 }
