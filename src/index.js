@@ -315,9 +315,7 @@ function userWins(creature, house, user){
  userWonButton.hidden = false
  
 
-
-  // fetch patch to update house points in backend
-    // based on creature.points
+// fetch()
 
     // create event listner so user clicks to find a new creature - pass event into -
     // renderEncounter(event, user, house)
