@@ -128,7 +128,8 @@ function renderEncounter(event, user, house){
 
   let lives = user.lives
   console.log(user)
-  
+  creatureWonButton.hidden = true
+  userWonButton.hidden = true
 
   renderPotions(user.lives)
 
@@ -232,6 +233,7 @@ function creatureEncounterLogic(user, house, creature){
     function renderSpells(spells){
       
       spellUl.hidden = false
+      spellUl.innerHTML = ""
       
       spells.forEach(spell => {
         let spellPTag = document.createElement("p")
@@ -304,6 +306,7 @@ function userWins(creature, house, user){
 
   let points = creature.points
   spellUl.hidden = true
+  spellUl.innerHTML = ""
 
   mainContentImageDiv.id = "main-content-image-div"
   mainContentMessage.innerText = `Nice spellcasting! You sent the ${creature.name} 
@@ -312,11 +315,10 @@ function userWins(creature, house, user){
  userWonButton.hidden = false
  
 
+
   // fetch patch to update house points in backend
     // based on creature.points
 
-    // show message "you earned ${points} for ${house} 
-    // by sending the ${creature} back to the forbidden forrest"
     // create event listner so user clicks to find a new creature - pass event into -
     // renderEncounter(event, user, house)
 
