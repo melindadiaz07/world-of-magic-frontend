@@ -376,7 +376,7 @@ creatureWonButton.innerText = `Use your ${item} to keep searching for creatures.
     })
   }
 }
-}
+
 
 function userDies(){
   // fetch patch to update house points (lose 100?)
