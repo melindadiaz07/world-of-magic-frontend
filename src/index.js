@@ -192,7 +192,7 @@ function renderPotions(lives){
 }
 
 
-// after rendering, start encounter with 3 chances to win
+
 
 function creatureEncounterLogic(user, house, creature){
   
@@ -218,15 +218,16 @@ function creatureEncounterLogic(user, house, creature){
       usersSpells.push(spellArray[index])
     })
       userSpellsList = usersSpells
-      renderSpells(usersSpells, turn)
+      renderSpells(usersSpells)
       
     })
 
 
-    function renderSpells(spells, turn){
+    function renderSpells(spells){
       
       spellUl.hidden = false
-    
+      
+
       spells.forEach(spell => {
         let spellPTag = document.createElement("p")
         spellPTag.innerText = spell.name
@@ -236,85 +237,69 @@ function creatureEncounterLogic(user, house, creature){
         spellUl.append(spellPTag)
         
         spellPTag.addEventListener('click', (event) => {
-          castSpells(event)
+          if (turn == 1) {
+          castSpell1(event)
+          } else if (turn == 2){
+            castSpell2(event)
+          } else {
+            castSpell3(event)
+          }
         })
       })
     }
       
 
   
-    function castSpells(event){
+    function castSpell1(event){
       event.preventDefault()
-
-      let turns = 3
-    
-      if (turns == 3) {
+       console.log(event.target)
+      
         event.currentTarget.remove()
         let damage = event.target.dataset.damage
       creatureHealth = creatureHealth - damage
-        console.log(`spell ${turns}`)
-        return turns--
+
+      if (creatureHealth < 0) {
+        userWins(creature, house, user)
+      } else {
+        mainContentMessage.innerText = "Your spell wasn't powerful enough! Cast again."
+        turn = 2 
+        }
       }
 
-      if (turns == 2) {
+      function castSpell2(event){
         event.currentTarget.remove()
+
         let damage = event.target.dataset.damage
-      creatureHealth = creatureHealth - damage
-        console.log(`spell ${turns}`)
-        return turns--
+        creatureHealth = creatureHealth - damage
+
+        if (creatureHealth < 0) {
+          userWins(creature, house, user)
+        } else {
+          mainContentMessage.innerText = "Your spell wasn't powerful enough! Cast again."
+        turn = 3
+       }
       }
 
-      if (turns == 1) {
-        event.currentTarget.remove()
+      function castSpell3(event){
+        
         let damage = event.target.dataset.damage
-      creatureHealth = creatureHealth - damage
-        console.log(`spell ${turns}`)
-        turns--
+        creatureHealth = creatureHealth - damage
+        
+        if (creatureHealth < 0) {
+          userWins(creature, house, user)
+        } else {
+          creatureWins(event, user, house, creature)
+       }
       }
-
-      if (turns == 0) {
-        console.log('you lose')
-        // creatureWins()
-      }
-      
-
-      
-
-      
-     
-    //   if (creatureHealth < 0) {
-    //     userWins(creature, house, user)
-    //   }
-     
-
-    //   creatureWins(event, user, house, creature)
     }
-  }
   
 
-
-
-
-function creatureWins(event, user, house, creature){
-
-  spellUl.hidden = true
-  // lose one life if creature health isn't 0 by this
-  // fetch patch to update character's lives in backend
-  console.log('you lose')
-  // if user still has lives, show message about magical item they used then
-  // add event listener so user can click on button to continue
-
-  // renderEncounter(event, user, house)
-  // if user loses last life, go to last life function
-    
-}
 
 
 function userWins(creature, house, user){
 
   let points = creature.points
   console.log('you win')
-  spellUl.hidden = true
 
   // fetch patch to update house points in backend
     // based on creature.points
@@ -326,8 +311,33 @@ function userWins(creature, house, user){
 
 }
 
+function creatureWins(event, user, house, creature){
+  
+  spellUl.hidden = true
+
+  mainContentImageDiv.hidden = true
+  mainContentMessage.innerText = "Your spell wasn't powerful enough! The creature attacks and escapes."
+
+  if (lives == 0) {
+    userDies(house, creature)
+  } else {
+
+    
+ // render a button with the current magical item you can use to revive yourself
+
+  // fetch patch to update character's lives in backend
+  
+  //show message about magical item they used then
+  // add event listener so user can click on button to continue
+
+  // renderEncounter(event, user, house)
+  // if user loses last life, go to last life function
+  }
+    
+}
 
 function userDies(){
   // fetch patch to update house points (lose 100?)
   // rerender page to front page
+  // fetch patch to return users lives to 5
 }
