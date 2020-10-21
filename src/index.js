@@ -218,7 +218,7 @@ function creatureEncounterLogic(user, house, creature){
   .then(res => res.json())
   .then(spellArray => {
 
-encounter-logic
+
     let spellIndexArray = []
     for (let i = 0; i < 5; i++) {
       let randomSpellIndex = Math.floor(Math.random()*spellArray.length)
@@ -260,24 +260,7 @@ encounter-logic
     }
       
 
-
-function renderSpells(spells){
   
-  spellUl.hidden = false
-  
-  spells.forEach(spell => {
-    let spellPTag = document.createElement("p")
-    spellPTag.innerText = spell.name
-    spellPTag.id = `spell-item-${spell.id}`
-    spellPTag.className = 'spell-item'
-    spellPTag.dataset.damage = `${spell.damage}`
-    spellUl.append(spellPTag)
-    spellPTag.addEventListener('click', (event) => {
-      castSpellOne(event)
-    })
-  }) 
-  
-encounter-logic
     function castSpell1(event){
       event.preventDefault()
        
