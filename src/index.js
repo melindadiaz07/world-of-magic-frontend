@@ -128,6 +128,9 @@ function renderFirstEncounter(event, user, house){
 
   renderPotions(user.lives)
 
+  let newUserFormHide = document.querySelector("#new-user-form")
+  newUserFormHide.hidden = true
+
   let oldForm = document.querySelector('#form-form')
   oldForm.hidden = true
   
