@@ -8,6 +8,9 @@ const mainContentMessage = document.querySelector("#main-content-message")
 const mainContentImageDiv = document.querySelector("#main-content-image-div")
 const bodyBackground = document.querySelector('.body-content')
 const spellUl = document.querySelector("#spells-ul")
+const creatureWonButton = document.querySelector('#creature-won-button')
+const userWonButton = document.querySelector('#user-won-button')
+const potionImages = document.querySelectorAll('.potion-img')
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -124,6 +127,7 @@ function renderEncounter(event, user, house){
   event.preventDefault()
 
   let lives = user.lives
+  console.log(user)
   
 
   renderPotions(user.lives)
@@ -185,12 +189,14 @@ function renderCreatureAndBackground(creature){
 
 
 function renderPotions(lives){
+  potionImages.forEach(potion => {
+    potion.hidden = true
+  })
   for (let i = 1; i <= lives; i++){
     let potion = document.querySelector(`#potion-${i}`)
     potion.hidden = false
   }
 }
-
 
 
 
@@ -227,7 +233,6 @@ function creatureEncounterLogic(user, house, creature){
       
       spellUl.hidden = false
       
-
       spells.forEach(spell => {
         let spellPTag = document.createElement("p")
         spellPTag.innerText = spell.name
@@ -252,8 +257,7 @@ function creatureEncounterLogic(user, house, creature){
   
     function castSpell1(event){
       event.preventDefault()
-       console.log(event.target)
-      
+       
         event.currentTarget.remove()
         let damage = event.target.dataset.damage
       creatureHealth = creatureHealth - damage
@@ -299,7 +303,14 @@ function creatureEncounterLogic(user, house, creature){
 function userWins(creature, house, user){
 
   let points = creature.points
-  console.log('you win')
+  spellUl.hidden = true
+
+  mainContentImageDiv.id = "main-content-image-div"
+  mainContentMessage.innerText = `Nice spellcasting! You sent the ${creature.name} 
+                                  back to the Forbidden Forrest. ${points} points to ${house.name}`
+
+ userWonButton.hidden = false
+ 
 
   // fetch patch to update house points in backend
     // based on creature.points
@@ -312,8 +323,11 @@ function userWins(creature, house, user){
 }
 
 function creatureWins(event, user, house, creature){
-  
+  console.log(house)
+  newLives = (user.lives)-1
+  console.log(`${newLives}`)
   spellUl.hidden = true
+  spellUl.innerHTML = ""
 
   mainContentImageDiv.hidden = true
   mainContentMessage.innerText = "Your spell wasn't powerful enough! The creature attacks and escapes."
@@ -322,16 +336,40 @@ function creatureWins(event, user, house, creature){
     userDies(house, creature)
   } else {
 
-    
- // render a button with the current magical item you can use to revive yourself
+    let item
+    switch (user.lives) {
+      case 5: 
+        item = "first potion"
+        break; 
+        case 4: 
+        item = " second potion"
+        break; 
+        case 3: 
+        item = "middle potion"
+        break; 
+        case 2: 
+        item = "second to last"
+        break; 
+        case 1: 
+        item = "last potion"
+      }
 
-  // fetch patch to update character's lives in backend
-  
-  //show message about magical item they used then
-  // add event listener so user can click on button to continue
+creatureWonButton.hidden = false
+creatureWonButton.innerText = `Use your ${item} to keep searching for creatures.`
 
-  // renderEncounter(event, user, house)
-  // if user loses last life, go to last life function
+  renderPotions((user.lives)-1)
+   
+  fetch(usersURL+`/${user.id}`, {
+    method: 'PATCH',
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ lives: `${newLives}`})
+  })
+  .then(res => res.json())
+  .then(user => {
+    creatureWonButton.addEventListener('click', (event) => {
+      renderEncounter(event, user, house)
+      })
+    })
   }
     
 }
