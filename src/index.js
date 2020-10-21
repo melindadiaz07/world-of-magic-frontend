@@ -29,7 +29,7 @@ function getHouses(){
 
 
 function renderHouse(house){
-  
+
   let headerDiv = document.querySelector('#header')
 
   let houseDiv = document.createElement('div')
@@ -42,7 +42,7 @@ function renderHouse(house){
   houseDiv.id = `${house.name}-title`
 
   let pointsEl = document.createElement('p')
-  pointsEl.innerHTML = `<br><br>Points: ${house.points}`
+  pointsEl.innerHTML = `Points: ${house.points}<br><br><br><br><br><br>`
   pointsEl.className = "points-p"
   pointsEl.id = `${house.name}-points`
   houseDiv.append(pointsEl)
@@ -115,7 +115,7 @@ function newUserForm(event){
 
 
 function welcomeMessage(){
-  mainContentMessage.innerHTML = "Welcome to the World of Magic!<br>We have creatures wandering Hogwarts and I need your help to send them back to the Forbidden Forrest. Choose your character or create your own. You will play for your house and gain as many points as you can. Beware! If you lose all five lives, you shall lose 100 points for your house. <br> We are only as strong as we are united, as weak as we are divided. Go forth!"
+  mainContentMessage.innerHTML = "Welcome to the World of Magic!<br>We have creatures wandering Hogwarts and I need your help to send them back to the Forbidden Forrest. Choose your character or create your own. You will play for your house and gain as many points as you can. <br> Beware! If you lose all five lives, you shall lose 100 points for your house. <br> We are only as strong as we are united, as weak as we are divided. So go forth and fend for your house!"
 }
 
 
@@ -206,49 +206,49 @@ function creatureEncounterLogic(user, house, creature){
   .then(res => res.json())
   .then(spellArray => {
 
-    let spellIndexArray = []
-    for (let i = 0; i < 5; i++) {
-      let randomSpellIndex = Math.floor(Math.random()*spellArray.length)
-      spellIndexArray.push(randomSpellIndex)
-    }
-    let usersSpells = []
-    spellIndexArray.forEach(index => {
-      usersSpells.push(spellArray[index])
-    })
-      renderSpells(usersSpells)
-      
-    })
-
-    function renderSpells(spells){
-      
-      spellUl.hidden = false
-      
-      spells.forEach(spell => {
-        let spellPTag = document.createElement("p")
-        spellPTag.innerText = spell.name
-        spellPTag.id = `spell-item-${spell.id}`
-        spellPTag.className = 'spell-item'
-        spellPTag.dataset.damage = `${spell.damage}`
-        spellUl.append(spellPTag)
-        spellPTag.addEventListener('click', (event) => {
-          castSpellOne(event)
-        })
-      }) 
-      
+  let spellIndexArray = []
+  for (let i = 0; i < 5; i++) {
+    let randomSpellIndex = Math.floor(Math.random()*spellArray.length)
+    spellIndexArray.push(randomSpellIndex)
   }
-
-  
-    function castSpellOne(event){
-      event.preventDefault()
-
-      let damage = event.target.dataset.damage
-
-      spellUl.hidden = true
-
+  let usersSpells = []
+  spellIndexArray.forEach(index => {
+    usersSpells.push(spellArray[index])
+  })
+    renderSpells(usersSpells)
     
-  }
+  })
 
+function renderSpells(spells){
   
+  spellUl.hidden = false
+  
+  spells.forEach(spell => {
+    let spellPTag = document.createElement("p")
+    spellPTag.innerText = spell.name
+    spellPTag.id = `spell-item-${spell.id}`
+    spellPTag.className = 'spell-item'
+    spellPTag.dataset.damage = `${spell.damage}`
+    spellUl.append(spellPTag)
+    spellPTag.addEventListener('click', (event) => {
+      castSpellOne(event)
+    })
+  }) 
+  
+}
+
+
+function castSpellOne(event){
+  event.preventDefault()
+
+  let damage = event.target.dataset.damage
+
+  spellUl.hidden = true
+
+
+}
+
+
 
 // function castSpell(event){
 //   console.log(event)
