@@ -32,7 +32,7 @@ function getHouses(){
 
 
 function renderHouse(house){
-  
+
   let headerDiv = document.querySelector('#header')
 
   let houseDiv = document.createElement('div')
@@ -40,12 +40,12 @@ function renderHouse(house){
 
   houseDiv.id = `${house.name}-header`
   let houseTitleEl = document.createElement('h2')
-  houseTitleEl.textContent = house.name
+  // houseTitleEl.textContent = house.name
   houseDiv.append(houseTitleEl)
   houseDiv.id = `${house.name}-title`
 
   let pointsEl = document.createElement('p')
-  pointsEl.innerText = `Points: ${house.points}`
+  pointsEl.innerHTML = `Points: ${house.points}<br><br><br><br><br><br>`
   pointsEl.className = "points-p"
   pointsEl.id = `${house.name}-points`
   houseDiv.append(pointsEl)
@@ -118,7 +118,7 @@ function newUserForm(event){
 
 
 function welcomeMessage(){
-  mainContentMessage.innerText = "Put welcome message here"
+  mainContentMessage.innerHTML = "Welcome to the World of Magic!<br>We have creatures wandering Hogwarts and I need your help to send them back to the Forbidden Forrest. Choose your character or create your own. You will play for your house and gain as many points as you can. <br> Beware! If you lose all five lives, you shall lose 100 points for your house. <br> We are only as strong as we are united, as weak as we are divided. So go forth and fend for your house!"
 }
 
 
@@ -132,6 +132,9 @@ function renderEncounter(event, user, house){
   userWonButton.hidden = true
 
   renderPotions(user.lives)
+
+  let newUserFormHide = document.querySelector("#new-user-form")
+  newUserFormHide.hidden = true
 
   let oldForm = document.querySelector('#form-form')
   oldForm.hidden = true
@@ -215,6 +218,7 @@ function creatureEncounterLogic(user, house, creature){
   .then(res => res.json())
   .then(spellArray => {
 
+encounter-logic
     let spellIndexArray = []
     for (let i = 0; i < 5; i++) {
       let randomSpellIndex = Math.floor(Math.random()*spellArray.length)
@@ -256,7 +260,24 @@ function creatureEncounterLogic(user, house, creature){
     }
       
 
+
+function renderSpells(spells){
   
+  spellUl.hidden = false
+  
+  spells.forEach(spell => {
+    let spellPTag = document.createElement("p")
+    spellPTag.innerText = spell.name
+    spellPTag.id = `spell-item-${spell.id}`
+    spellPTag.className = 'spell-item'
+    spellPTag.dataset.damage = `${spell.damage}`
+    spellUl.append(spellPTag)
+    spellPTag.addEventListener('click', (event) => {
+      castSpellOne(event)
+    })
+  }) 
+  
+encounter-logic
     function castSpell1(event){
       event.preventDefault()
        
