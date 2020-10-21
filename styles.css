@@ -27,10 +27,11 @@ body {
   font-family: boltfont;
   background-repeat: no-repeat;
   background-color: #000000;
+  overflow: hidden;
 }
 
 .body-content {
-  background-image: url("assets/images/willow.jpg");
+  background-image: url("assets/images/hogwarts1.png");
   background-color: #000000;
   height: 100vh; 
   background-position: center;
@@ -43,10 +44,20 @@ body {
 
 #top-bar {
   display: inline-block;
-  background-color: rgb(201, 195, 195, 0.3);
+  /* background-color: rgb(201, 195, 195, 0.3); */
   height: 100%;
+  width: 16%;
 }
 
+.top-bar-image{
+  background-image: url("assets/images/sidebar.png");
+  background-size: 84%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+
+}
 #header {
   padding-left: 25px;
 }
@@ -119,7 +130,9 @@ h2 {
 #new-user-form {
   padding: 30px;
   font-size: 20px;
-
+  position: relative;
+  left: 100%;
+  background-color: rgba(219, 219, 219, 0.637);
 }
 
 #new-user-form button {
@@ -137,8 +150,8 @@ h2 {
 #main-content-image-div{
   height: 400px;
   position: relative;
-  left: 25%;
-  top: 7%;
+  left: 70%;
+  top: 11%;
   content: url("assets/images/dumbledore.gif")
 }
 
@@ -158,32 +171,47 @@ h2 {
 
 
 #Horntail-image{
-  height: 400px;
-  content: url("assets/images/horntail.png")
+  height: 550px;
+  content: url("assets/images/horntail.png");
+  position: absolute;
+  left: 350px;
+  bottom: 80px;
 }
 
 #Dementor-image{
   height: 400px;
-  content: url("assets/images/dementor.png")
+  content: url("assets/images/dementor.png");
+  position: absolute;
+  left: 350px;
+  bottom: 60px;
 }
 
 #Werewolf-image{
-  height: 400px;
-  content: url("assets/images/werewolf.png")
+  height: 500px;
+  content: url("assets/images/werewolf.png");
+  position: absolute;
+  left: 350px;
+  bottom: 60px;
 }
 
 #Cockatrice-image{
-  height: 400px;
-  content: url("assets/images/cockatrice.png")
+  height: 500px;
+  content: url("assets/images/cockatrice.png");
+  position: absolute;
+  left: 350px;
+  bottom: 100px;
 }
 
 #Basilisk-image{
-  height: 400px;
-  content: url("assets/images/basilisk.png")
+  height: 500px;
+  content: url("assets/images/basilisk.png");
+  position: absolute;
+  left: 350px;
+  bottom: 30px;
 }
 
 #main-content-message {
-  padding-bottom: 15px;
+  padding: 10px;
   text-align: center;
   background-color: rgb(201, 195, 195, 0.3);
 
@@ -294,9 +322,10 @@ h2 {
 
  #spells-div{
    display: inline-block;
+   padding: 10px;
    position: fixed;
    bottom: 15px;
-   margin-left: 50px;
+   margin-left: 300px;
    background-color: rgb(201, 195, 195, 0.3)
  }
 
