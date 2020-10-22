@@ -22,13 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 
-
 function getHouses(){
   fetch(housesURL)
   .then(res => res.json())
   .then(houseData => houseData.forEach(house => renderHouse(house)))
 }
-
 
 
 function renderHouse(house){
@@ -45,7 +43,7 @@ function renderHouse(house){
   houseDiv.id = `${house.name}-title`
 
   let pointsEl = document.createElement('p')
-  pointsEl.innerHTML = `Points: ${house.points}<br><br><br><br><br><br>`
+  pointsEl.innerHTML = `Points: ${house.points}<br><br><br><br><br>`
   pointsEl.className = "points-p"
   pointsEl.id = `${house.name}-points`
   houseDiv.append(pointsEl)
@@ -59,7 +57,7 @@ function renderHouse(house){
   houseUserList.className = "dropdown-content"
 
   let dropdownBtn = document.createElement('button')
-  dropdownBtn.className = 'dropbtn'
+  dropdownBtn.className = `${house.name}-dropbtn`
   dropdownBtn.innerText = "Students"
 
   dropdownDiv.append(dropdownBtn)
@@ -159,7 +157,6 @@ function renderEncounter(event, user, house){
 };
   
 
-
 function renderCreatureAndBackground(creature){
   let randomBackground = Math.floor(Math.random()*7 +1)
   mainContentImageDiv.id = `${creature.name}-image`
@@ -201,8 +198,6 @@ function renderPotions(lives){
     potion.hidden = false
   }
 }
-
-
 
 function creatureEncounterLogic(user, house, creature){
   
@@ -343,19 +338,19 @@ function creatureWins(event, user, house, creature){
     let item
     switch (user.lives) {
       case 5: 
-        item = "first potion"
+        item = "Horcrux Goblet"
         break; 
         case 4: 
-        item = " second potion"
+        item = "Butter Beer"
         break; 
         case 3: 
-        item = "middle potion"
+        item = "Timeturner"
         break; 
         case 2: 
-        item = "second to last"
+        item = "Felix Felicis"
         break; 
         case 1: 
-        item = "last potion"
+        item = "Marvolo Gaunt's Ring"
       }
 
 creatureWonButton.hidden = false

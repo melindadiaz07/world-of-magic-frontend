@@ -54,7 +54,7 @@ body {
   background-size: 90%;
   background-repeat: no-repeat;
   position: absolute;
-  top: 0%;
+  top: 2%;
   left: 0%;
 
 }
@@ -68,11 +68,31 @@ h2 {
   
 }
 
-.points-p {
-  font-size: 20px;
+/*points*/
+
+#Gryffindor-points.points-p{
+  font-size: 25px;
   position: relative;
-  left: 100px;
-  bottom: 10px;
+  left: 95px;
+  bottom: 12px;
+}
+#Hufflepuff-points.points-p{
+  font-size: 25px;
+  position: relative;
+  left: 95px;
+  bottom: 25px;
+}
+#Slytherin-points.points-p{
+  font-size: 25px;
+  position: relative;
+  left: 95px;
+  top: -50px;
+}
+#Ravenclaw-points.points-p{
+  font-size: 25px;
+  position: relative;
+  left: 95px;
+  bottom: 70px;
 }
 
 .new-submit-button {
@@ -80,7 +100,7 @@ h2 {
   font-size: 15px;
 }
 
-.dropbtn {
+.Gryffindor-dropbtn {
   background-color:grey;
   color: white;
   padding: 4px 26.5px;
@@ -92,6 +112,46 @@ h2 {
   position: relative;
   left: 80px;
   bottom: 110px;
+}
+
+.Hufflepuff-dropbtn {
+  background-color:grey;
+  color: white;
+  padding: 4px 26.5px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  font-family: boltfont;
+  border-radius: 5%;
+  position: relative;
+  left: 80px;
+  bottom: 125px;
+}
+.Slytherin-dropbtn {
+  background-color:grey;
+  color: white;
+  padding: 4px 26.5px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  font-family: boltfont;
+  border-radius: 5%;
+  position: relative;
+  left: 80px;
+  bottom: 150px;
+}
+.Ravenclaw-dropbtn {
+  background-color:grey;
+  color: white;
+  padding: 4px 26.5px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  font-family: boltfont;
+  border-radius: 5%;
+  position: relative;
+  left: 80px;
+  bottom: 170px;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -137,17 +197,22 @@ h2 {
 }
 
 #new-user-form {
-  padding: 30px;
-  font-size: 20px;
+  height: 35%;
+  width: 110%;
+  padding: 50px;
+  font-size: 30px;
   position: relative;
-  left: 160%;
-  bottom: 30%;
-  background-color: rgba(219, 219, 219, 0.637);
-  border-radius: 5%;
+  left: 170%;
+  bottom: 60%;
+  background-color: rgb(179 179 179 / 35%);
+  border-radius: 1%;
+  z-index: 1;
 }
 
 #new-user-form button {
   position: absolute;
+  background-color: transparent;
+  border: 0;
 }
 
 #sort-text {
@@ -161,22 +226,23 @@ h2 {
 #main-content-image-div{
   height: 450px;
   position: relative;
-  left: 70%;
-  top: 1%;
-  content: url("assets/images/dumbledore.gif")
+  left: 55%;
+  top: 41%;
+  content: url(assets/images/dumbledore.gif);
+  z-index: 1;
 }
 
 
 #main-content {
-  height: 650px;
-  width: 725px;
+  height: 95%;
+  width: 85%;
   font-size: 30px;
   /* background-color: rgb(201, 195, 195, 0.3); */
   display: inline-block;
-  position: absolute;
-  left: 30%;
-  top: 7%;
-  bottom: 5%;
+  position: relative;
+  left: 14.5%;
+  top: 2%;
+  bottom: 10%;
 }
 
 
@@ -185,7 +251,7 @@ h2 {
   height: 550px;
   content: url("assets/images/horntail.png");
   position: absolute;
-  left: 350px;
+  left: 50%;
   bottom: 80px;
 }
 
@@ -193,15 +259,15 @@ h2 {
   height: 400px;
   content: url("assets/images/dementor.png");
   position: absolute;
-  left: 350px;
-  bottom: 60px;
+  left: 52%;
+  bottom: 30%;
 }
 
 #Werewolf-image{
   height: 500px;
   content: url("assets/images/werewolf.png");
   position: absolute;
-  left: 350px;
+  left: 50%;
   bottom: 60px;
 }
 
@@ -209,7 +275,7 @@ h2 {
   height: 500px;
   content: url("assets/images/cockatrice.png");
   position: absolute;
-  left: 350px;
+  left: 45%;
   bottom: 100px;
 }
 
@@ -217,7 +283,7 @@ h2 {
   height: 500px;
   content: url("assets/images/basilisk.png");
   position: absolute;
-  left: 350px;
+  left: 50%;
   bottom: 30px;
 }
 
@@ -231,9 +297,18 @@ h2 {
 
 
 #main-content-message {
+  background-image: url("assets/images/scroll.png");
+  /* border-image-slice: 20;
+  border-image-width: 20; */
+  /* border-image-outset: 1; */
+  border: 10px solid transparent;
   padding: 10px;
   text-align: center;
   background-color: rgb(201, 195, 195, 0.3);
+  position: fixed;
+  left: 20%;
+  right: 10%;
+  top: 7%;
 
 }
 
@@ -346,7 +421,9 @@ h2 {
    position: fixed;
    bottom: 15px;
    margin-left: 300px;
-   background-color: rgb(201, 195, 195, 0.3)
+   background-color: rgb(201, 195, 195, 0.3);
+   z-index: 1;
+   border-radius: 6.5%;
  }
 
  .spell-item {
@@ -357,9 +434,61 @@ h2 {
    font-family: boltfont;
  }
 
+
+ .new-user-name {
+  padding: 0;
+  height: 30px;
+  position: relative;
+  left: 30px;
+  top: 10px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #cdcdcd;
+  border-color: rgba(0, 0, 0, .15);
+  background-color: white;
+  font-size: 16px;
+ }
+
+ .user-name{
+  text-align: center;
+  position: fixed;
+  left: 35%;
+  bottom: 43%;
+ }
+
  #form-sorting-hat {
-   height: 30px;
-   padding-top: 5px;
-    margin-top: -10px;
-    position: relative;
+  height: 220px;
+  margin-top: -20px;
+  position: relative;
+  background-color: transparent;
+ }
+
+#creature-won-button{
+  background-color:#000702b7;
+	border-radius:5px;
+	border:2px solid #383838dc;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:lumosfont;
+	font-size:19px;
+	padding:10px 50px;
+  text-decoration:none;
+  position: absolute;
+  left: 25%;
+  top: 35%;
+}
+
+#user-won-button {
+  background-color:#000702b7;
+	border-radius:5px;
+	border:2px solid #383838dc;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:lumosfont;
+	font-size:19px;
+	padding:10px 50px;
+  text-decoration:none;
+  position: absolute;
+  left: 33%;
+  top: 35%;
  }
