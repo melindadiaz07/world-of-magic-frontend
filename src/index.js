@@ -49,21 +49,25 @@ function renderHouse(house){
   houseDiv.id = `${house.name}-title`
 
   let pointsEl = document.createElement('p')
-  pointsEl.innerHTML = `Points: ${house.points}<br><br><br><br><br>`
+  pointsEl.innerHTML = `Points: ${house.points}`
   pointsEl.className = "points-p"
   pointsEl.id = `${house.name}-points`
   houseDiv.append(pointsEl)
 
   let dropdownDiv = document.createElement('div')
   dropdownDiv.className = "dropdown"
+  dropdownDiv.id = `${house.name}-dropbtn`
   houseDiv.append(dropdownDiv)
+  
 
   let houseUserList = document.createElement('div')
   houseUserList.id = `ul-${house.id}-house`
   houseUserList.className = "dropdown-content"
 
   let dropdownBtn = document.createElement('button')
-  dropdownBtn.className = `${house.name}-dropbtn`
+
+  // dropdownClass.classList.add(`${house.name}-dropbtn`)
+  dropdownBtn.classList.add("dropbtn")
   dropdownBtn.innerText = "Students"
 
   dropdownDiv.append(dropdownBtn)
@@ -130,6 +134,7 @@ function welcomeMessage(){
 function renderEncounter(event, user, house){
   event.preventDefault()
 
+
   let lives = user.lives
   
   creatureWonButton.hidden = true
@@ -145,14 +150,28 @@ function renderEncounter(event, user, house){
   let oldForm = document.querySelector('#form-form')
   oldForm.hidden = true
   
+  let dropDownClass2 = document.querySelectorAll(".dropdown")
+  dropDownClass2.forEach(singleDD => singleDD.classList.remove("dropdown"))
+
+  dropDownClass2.forEach(singleDD => singleDD.style.visibility = "hidden")
+
   let characterButtons = document.querySelectorAll('.character-button')
   characterButtons.forEach(characterButton =>{
     characterButton.hidden = true;
   })
   let dropButtons = document.querySelectorAll(".dropbtn")
   dropButtons.forEach(button =>{
-    button.hidden = true
+    button.style.visibility = "hidden"
   })
+
+  let housesButton = document.querySelectorAll(`#${house.name}-dropbtn`)
+  housesButton.forEach(houseButton => 
+  houseButton.hidden = true)
+
+  let userButtons = document.querySelectorAll(".dropdown-content")
+  userButtons.forEach(singleButton => 
+  singleButton.hidden = true)
+
 
   fetch(creaturesURL)
   .then(res => res.json())
