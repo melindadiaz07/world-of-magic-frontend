@@ -204,7 +204,6 @@ h2 {
   position: relative;
   left: 170%;
   bottom: 60%;
-  background-color: rgb(179 179 179 / 35%);
   border-radius: 1%;
   z-index: 1;
 }
@@ -295,18 +294,22 @@ h2 {
   bottom: 30px;
 }
 
+.main-content-bg{
+  border: 10px solid transparent;
+  background-image: url("https://i.pinimg.com/originals/fc/e4/29/fce4299099e5178be05f20abad84aed2.png");
+  background-position: center;
+  opacity: .8;
+  width: 60%;
+  position: relative;
+  border-radius: 5px;
+}
 
 #main-content-message {
-  background-image: url("assets/images/scroll.png");
-  /* border-image-slice: 20;
-  border-image-width: 20; */
-  /* border-image-outset: 1; */
-  border: 10px solid transparent;
   padding: 10px;
   text-align: center;
   background-color: rgb(201, 195, 195, 0.3);
   position: fixed;
-  left: 20%;
+  left: 25%;
   right: 10%;
   top: 7%;
 
