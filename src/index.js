@@ -137,6 +137,7 @@ function renderEncounter(event, user, house){
   creatureWonButton.hidden = true
   userWonButton.hidden = true
   useMagicalItem.hidden = true
+  mainContentImageDiv.hidden = false
 
   renderPotions(user.lives)
 
@@ -437,6 +438,7 @@ function userDies(house, user){
     mainContentMessage.innerText = `Looks like you're out of magical items and that last creature did you in. 
                                     100 points from ${house.name}, and you better let Madam Pomfrey look at those wounds.`
     mainContentImageDiv.id = 'main-content-image-div'
+    mainContentImageDiv.hidden = false
 
 
   
