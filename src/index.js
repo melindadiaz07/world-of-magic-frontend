@@ -12,6 +12,7 @@ const creatureWonButton = document.querySelector('#creature-won-button')
 const userWonButton = document.querySelector('#user-won-button')
 const potionImages = document.querySelectorAll('.potion-img')
 const useMagicalItem = document.querySelector('#use-magical-item')
+const hospitalWingButton = document.querySelector('#hospital-wing-button')
  
 
 
@@ -355,7 +356,7 @@ function creatureWins(event, user, house, creature){
   mainContentMessage.innerText = "Your spell wasn't powerful enough! The creature attacks and escapes."
 
   if (lives == 0) {
-    userDies(house, creature)
+    userDies(house, user)
   } else {
 
     let itemSource
@@ -405,9 +406,44 @@ useMagicalItem.src = itemSource
 }
 
 
-function userDies(){
+function userDies(house, user){
   console.log('you dead')
-  // fetch patch to update house points (lose 100?)
-  // rerender page to front page
-  // fetch patch to return users lives to 5
+
+  let lowerPoints = house.points - 100
+  if (lowerPoints < 0 ) {
+    lowerPoints = 0
+  }
+
+  fetch(usersURL+`/${user.id}`, {
+    method: 'PATCH',
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ lives: 5 })
+  })
+  .then(res => res.json())
+  .then(user => {
+    
+  fetch(housesURL+`/${house.id}`, {
+    method: 'PATCH',
+    headers: {"Content-Type": "application/json",
+              "Accept": "application/json"},
+    body: JSON.stringify({ points: `${lowerPoints}`})
+  })
+  .then(houseData => {
+
+    let housePointsEl = document.querySelector(`#${house.name}-points`)
+    housePointsEl.innerText = `${house.points}`
+    hospitalWingButton.hidden = false
+
+    mainContentMessage.innerText = `Looks like you're out of magical items and that last creature did you in. 
+                                    100 points from ${house.name}, and you better let Madam Pomfrey look at those wounds.`
+    mainContentImageDiv.id = 'main-content-image-div'
+
+
+  
+    hospitalWingButton.addEventListener('click', (event) => {
+      location.reload()
+      })
+   })
+  })
+  
 }
