@@ -13,9 +13,8 @@ const userWonButton = document.querySelector('#user-won-button')
 const potionImages = document.querySelectorAll('.potion-img')
 const useMagicalItem = document.querySelector('#use-magical-item')
 const hospitalWingButton = document.querySelector('#hospital-wing-button')
- 
-
-
+let newHousePoints
+let creaturePoints
 
 
 
@@ -36,6 +35,8 @@ function getHouses(){
 
 
 function renderHouse(house){
+
+
 
   let headerDiv = document.querySelector('#header')
 
@@ -87,7 +88,8 @@ function renderUserList(user, house){
   userLink.className = 'character-button'
   
   document.querySelector(`#character-${firstName}-link`).addEventListener("click", (event) => {
-    renderEncounter(event, user, house)
+   
+      renderEncounter(event, user, house)
   })
 }
 
@@ -132,6 +134,15 @@ function renderEncounter(event, user, house){
 
   let lives = user.lives
   
+  fetch(housesURL+`/${house.id}`)
+    .then(res => res.json())
+    .then(house => {
+      newHousePoints = house.points
+    })
+  
+
+
+
   creatureWonButton.hidden = true
   userWonButton.hidden = true
   useMagicalItem.hidden = true
@@ -211,11 +222,13 @@ function renderPotions(lives){
 }
 
 function creatureEncounterLogic(user, house, creature){
+
+  creaturePoints = creature.points
+  
   
   lives = user.lives
-  let housePoints = house.points
+  
   let creatureHealth = creature.health
-  let creaturePoints = creature.points
   let turn = 1
   let userSpellsList
 
@@ -312,30 +325,46 @@ function creatureEncounterLogic(user, house, creature){
 
 function userWins(creature, house, user){
 
+
+  
+  creaturePoints = creature.points
+  newHousePoints = (creature.points)+(house.points)
+  
+
   spellUl.hidden = true
   spellUl.innerHTML = ""
-
-  let newPoints = house.points + creature.points
+  creaturePoints = creature.points
+  
 
   mainContentImageDiv.id = "main-content-image-div"
   mainContentMessage.innerText = `Nice spellcasting! You sent the ${creature.name} 
                                   back to the Forbidden Forrest. ${creature.points} points to ${house.name}`
 
+  let housePointsText = document.querySelector(`#${house.name}-points`)
+  housePointsText.innerHTML = `Points: ${(creature.points)+(house.points)}<br><br><br><br><br>`                                 
+
  userWonButton.hidden = false
- 
+
 
 fetch(housesURL+`/${house.id}`, {
   method: 'PATCH',
   headers: {"Content-Type": "application/json",
             "Accept": "application/json"},
-  body: JSON.stringify({ points: `${newPoints}`})
+  body: JSON.stringify({ points: `${newHousePoints}`})
 })
 .then(houseData => {
-  let housePointsEl = document.querySelector(`#${house.name}-points`)
-  housePointsEl.innerText = `${house.points}`
+  let housePointsText = document.querySelector(`#${house.name}-points`)
+  housePointsText.innerHTML = `Points: ${(creature.points)+(house.points)}<br><br><br><br><br>`
 
   userWonButton.addEventListener('click', (event) => {
+
+  fetch(housesURL+`/${house.id}`)
+  .then(res => res.json())
+  .then(house => {
+    newHousePoints = house.points
     renderEncounter(event, user, house)
+  })
+
     })
  })
 }
@@ -352,7 +381,7 @@ function creatureWins(event, user, house, creature){
   mainContentImageDiv.hidden = true
   mainContentMessage.innerText = "Your spell wasn't powerful enough! The creature attacks and escapes."
 
-  if (lives == 0) {
+  if (lives === 0) {
     userDies(house, user)
   } else {
 
@@ -404,9 +433,8 @@ useMagicalItem.src = itemSource
 
 
 function userDies(house, user){
-  console.log('you dead')
 
-  let lowerPoints = house.points - 100
+  let lowerPoints = (house.points) - 100
   if (lowerPoints < 0 ) {
     lowerPoints = 0
   }
@@ -421,23 +449,20 @@ function userDies(house, user){
     
   fetch(housesURL+`/${house.id}`, {
     method: 'PATCH',
-    headers: {"Content-Type": "application/json",
-              "Accept": "application/json"},
+    headers: {"Content-Type": "application/json"},
     body: JSON.stringify({ points: `${lowerPoints}`})
   })
   .then(houseData => {
-
+    
     let housePointsEl = document.querySelector(`#${house.name}-points`)
-    housePointsEl.innerText = `${house.points}`
+    housePointsEl.innerHTML = `Points: ${lowerPoints}`
     hospitalWingButton.hidden = false
 
     mainContentMessage.innerText = `Looks like you're out of magical items and that last creature did you in. 
                                     100 points from ${house.name}, and you better let Madam Pomfrey look at those wounds.`
     mainContentImageDiv.id = 'main-content-image-div'
     mainContentImageDiv.hidden = false
-
-
-  
+ 
     hospitalWingButton.addEventListener('click', (event) => {
       location.reload()
       })
