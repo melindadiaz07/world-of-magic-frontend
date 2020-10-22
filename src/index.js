@@ -21,7 +21,7 @@ const hospitalWingButton = document.querySelector('#hospital-wing-button')
 
 document.addEventListener("DOMContentLoaded", () => {
   getHouses()
-  document.querySelector(".new-submit-button").addEventListener('click', (event) => {
+  document.querySelector("#form-sorting-hat").addEventListener('click', (event) => {
     newUserForm(event)
   });
   welcomeMessage()
@@ -352,8 +352,8 @@ fetch(housesURL+`/${house.id}`, {
 .then(houseData => {
   let housePointsEl = document.querySelector(`#${house.name}-points`)
   housePointsEl.innerText = `${house.points}`
-
   userWonButton.addEventListener('click', (event) => {
+    debugger
     renderEncounter(event, user, house)
     })
  })

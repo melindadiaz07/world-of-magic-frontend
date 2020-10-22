@@ -14,57 +14,62 @@
   </head>
   <body>
     <div class="body-content">
-    <div id="top-bar" class="top-bar-image">
-   <div id="header">
-     
+      <!-- top bar-->
+      <div id="top-bar" class="top-bar-image">
+        <div id="header">
+        </div>
+
+        <div id="new-user-form">
+          <form id="form-form">
+            <label class="user-name"> N a m e :</label><br>
+            <input class="new-user-name" type="text" value=""><br><br>
+            <button class="new-submit-button" type="submit"> <img id="form-sorting-hat" src="assets/images/sortinghat1.gif"></button>
+      
+            <br>
+          </form>
+          <!-- <div id="sorting-hat">
+           </div> -->
+        </div>
+      </div>
+
+      <!-- spells -->
+      <div id="spells-div">
+        <!-- <h2>Your Spells:</h2> -->
+        <ul id="spells-ul" hidden= true>
+
+        </ul>
+      </div>
+
+      <!-- main content-->
+      <div id="main-content">
+        <div id="main-content-message" class="main-content-bg">
+        </div>
+        
+        
+        <div id="main-content-image-div" class="main-content-image">
+        </div>
+        
+      </div>
+      
+      <!-- potions-->
+      <div id="potions">
+        <img class="potion-img" id="potion-5" src="assets/potions/horcrux.gif" hidden="true">
+        <img class="potion-img" id="potion-4" src="assets/potions/butterbeer.gif" hidden="true">
+        <img class="potion-img" id="potion-3" src="assets/potions/timeturner.gif" hidden="true">
+        <img class="potion-img" id="potion-2" src="assets/potions/ring.gif" hidden="true">
+        <img class="potion-img" id="potion-1" src="assets/potions/felix.gif" hidden=true>
+      </div>
+      
+    </div>
     
-
-   </div>
-   <div id="new-user-form">
-    <form id="form-form">
-      <label class="user-name"> N a m e :</label><br>
-      <input class="new-user-name" type="text" value=""><br><br>
-      <button class="new-submit-button" type="submit"> <img id="form-sorting-hat" src="assets/images/sortinghat1.gif"></button>
+        <div id="main-content-btn-div">
+          <button id="creature-won-button" hidden=true></button>
+          <button id="user-won-button" hidden=true>Search for more creatures</button>
+          <button id="hospital-wing-button" hidden=true>Regroup in the Hospital Wing</button>
       
-      <br>
-    </form>
-    <!-- <div id="sorting-hat">
-      
-    </div> -->
-   </div>
-  </div>
+          <img id="use-magical-item" hidden=true>
+        </div>
 
-<div id="spells-div">
-  <!-- <h2>Your Spells:</h2> -->
-  <ul id="spells-ul" hidden= true>
-
-  </ul>
-</div>
-  <div id="main-content">
-    <div id="main-content-message" class="main-content-bg">
-
-    </div>
-    <div id="main-content-btn-div">
-      <button id="creature-won-button" hidden=true></button>
-      <button id="user-won-button" hidden=true>Search for more creatures</button>
-      <button id="hospital-wing-button" hidden=true>Regroup in the Hospital Wing</button>
-
-      <img id="use-magical-item" hidden=true>
-    </div>
-    <div id="main-content-image-div" class="main-content-image">
-    </div>
-     
-  </div>
-
-  <div id="potions">
-    <img class="potion-img" id="potion-5" src="assets/potions/horcrux.gif" hidden="true">
-    <img class="potion-img" id="potion-4" src="assets/potions/butterbeer.gif" hidden="true">
-    <img class="potion-img" id="potion-3" src="assets/potions/timeturner.gif" hidden="true">
-    <img class="potion-img" id="potion-2" src="assets/potions/ring.gif" hidden="true">
-    <img class="potion-img" id="potion-1" src="assets/potions/felix.gif" hidden=true>
-  </div>
-  
-</div>
     <script src="src/index.js" ></script>
   </body>
-</html>
+  </html>
