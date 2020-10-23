@@ -122,7 +122,21 @@ function newUserForm(event){
     fetch(housesURL+`/${newHouse}`)
     .then(res => res.json())
     .then(house => {
-      renderEncounter(event, newUser, house)
+
+      let newUserFormHide = document.querySelector("#new-user-form")
+  newUserFormHide.hidden = true
+
+  let oldForm = document.querySelector('#form-form')
+  oldForm.hidden = true
+
+      mainContentMessage.innerHTML = `Welcome to ${house.name}!`
+
+      let searchButton = document.querySelector('#user-won-button')
+      searchButton.hidden = false
+      
+      searchButton.addEventListener('click', () => {
+        renderEncounter(event, newUser, house)
+      })
     })
   });
 }
@@ -422,7 +436,7 @@ function creatureWins(event, user, house, creature){
   spellUl.innerHTML = ""
 
   mainContentImageDiv.hidden = true
-  mainContentMessage.innerText = `Your spell wasn't powerful enough! The ${creature.name} attacks and escapes.`
+  mainContentMessage.innerText = `Your spells weren't powerful enough! The ${creature.name} attacks and escapes.`
 
   if (lives === 0) {
     userDies(house, user)
