@@ -202,36 +202,36 @@ function renderCreatureAndBackground(creature){
   let locationName
   switch (randomBackground) {
     case 1: 
-      locationName = "the Library"
+      locationName = " in the Library"
       break;
     case 2:
-      locationName = "the Great Hall"
+      locationName = " in the Great Hall"
       break;
     case 3:
-      locationName = "the Slytherin Common Room"
+      locationName = " in the Slytherin Common Room"
       break; 
     case 4:
-      locationName = "the Gryffindor Common Room"
+      locationName = " in the Gryffindor Common Room"
       break;
     case 5:
-      locationName = "the Forbidden Forrest"
+      locationName = " in the Forbidden Forrest"
       break;
     case 6:
-      locationName = "the Corridors"
+      locationName = " in the Corridors"
       break;
     case 7:
-      locationName = "the Great Hall"
+      locationName = " in the Great Hall"
       break;
     case 8: 
-      locationName = "the Potion Room"
+      locationName = " in the Potion Room"
       break;
     case 9:
-      locationName = "the Whomping Willow"
+      locationName = " near the Whomping Willow"
       break;
     case 10: 
-      locationName = "Hagrid's Hut"
+      locationName = " outside Hagrid's Hut"
   }
-  mainContentMessage.innerText = `You found a ${creature.name} in ${locationName}`
+  mainContentMessage.innerText = `You found a ${creature.name} ${locationName}`
 }
 
 
