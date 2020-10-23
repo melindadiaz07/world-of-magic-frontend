@@ -538,6 +538,9 @@ h2 {
 
  /* Spells */
 
+ #spells-div-hidden{
+   background-color: transparent;
+ }
  #spells-div{
    display: inline-block;
    padding: 10px;
@@ -550,6 +553,8 @@ h2 {
   background-image: url(https://thumbs.gfycat.com/HardHoarseBarasinga-max-14mb.gif);
   opacity: .7;
  }
+
+
 
  .spell-item {
    font-size: 30px;

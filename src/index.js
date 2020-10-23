@@ -17,6 +17,7 @@ let newHousePoints
 let creaturePoints
 let lastSpell = null
 let spellDiv = document.querySelector(".spell-image")
+const spellsDivHidden = document.querySelector('#spells-div-hidden')
 
 document.addEventListener("DOMContentLoaded", () => {
   getHouses()
@@ -277,6 +278,7 @@ function creatureEncounterLogic(user, house, creature){
 
     function renderSpells(spells){
       
+      spellsDivHidden.id = 'spells-div'
       spellUl.hidden = false
       spellUl.innerHTML = ""
       
@@ -305,6 +307,7 @@ function creatureEncounterLogic(user, house, creature){
       event.preventDefault()
 
       spellDiv.innerHTML = ""
+      spellDiv.hidden = true
       let spellImgTag = document.createElement("img")
       spellDiv.append(spellImgTag)
       mainContentDiv.append(spellDiv)
@@ -324,6 +327,7 @@ function creatureEncounterLogic(user, house, creature){
       function castSpell2(event, spell){
         event.currentTarget.remove()
         spellDiv.innerHTML = ""
+        spellDiv.hidden = true
         let spellImgTag = document.createElement("img")
         spellDiv.append(spellImgTag)
         spellImgTag.src = spell.image
@@ -341,6 +345,7 @@ function creatureEncounterLogic(user, house, creature){
 
       function castSpell3(event, spell){
         spellDiv.innerHTML = ""
+        spellDiv.hidden = true
         let spellImgTag = document.createElement("img")
         spellDiv.append(spellImgTag)
         mainContentDiv.append(spellDiv)
@@ -363,6 +368,7 @@ function userWins(creature, house, user){
   creaturePoints = creature.points
   newHousePoints = (creature.points)+(house.points)
   
+  spellsDivHidden.id = 'spells-div-hidden'
 
   spellUl.hidden = true
   spellUl.innerHTML = ""
@@ -408,6 +414,7 @@ function creatureWins(event, user, house, creature){
 
   newLives = (user.lives)-1
   
+  spellsDivHidden.id = 'spells-div-hidden'
   spellUl.hidden = true
   spellUl.innerHTML = ""
 
