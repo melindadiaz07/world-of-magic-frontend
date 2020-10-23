@@ -379,7 +379,7 @@ function creatureWins(event, user, house, creature){
   spellUl.innerHTML = ""
 
   mainContentImageDiv.hidden = true
-  mainContentMessage.innerText = "Your spell wasn't powerful enough! The creature attacks and escapes."
+  mainContentMessage.innerText = `Your spell wasn't powerful enough! The ${creature.name} attacks and escapes.`
 
   if (lives === 0) {
     userDies(house, user)
@@ -389,23 +389,23 @@ function creatureWins(event, user, house, creature){
     let message
 
     switch (user.lives) {
-      case 1: 
+      case 5: 
         itemSource = "assets/potions/horcrux.gif"
         message = "Drink your potion to be revived"
-        break; 
-        case 2: 
-        message = "Use your time-turner to roll back the clock"
-        itemSource = "assets/potions/timeturner.gif"
-        break; 
-        case 3: 
+        break;
+        case 4: 
         message = "Drink your butterbeer to be revived"
         itemSource = "assets/potions/butterbeer.gif"
         break; 
-        case 4: 
+        case 3: 
+        message = "Use your time-turner to roll back the clock"
+        itemSource = "assets/potions/timeturner.gif"
+        break; 
+        case 2: 
         message = "Use your magical ring to dissappear"
         itemSource = "assets/potions/ring.gif"
         break; 
-        case 5: 
+        case 1: 
         message = "Drink your felix felices potion to get better luck"
         itemSource = "assets/potions/felix.gif"
       }

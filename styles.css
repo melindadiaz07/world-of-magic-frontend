@@ -295,7 +295,7 @@ h2 {
 }
 
 #Occamy-image{
-  height: 200px;
+  height: 500px;
   content: url("assets/images/occamy.png");
   position: absolute;
   left: 700px;
@@ -333,6 +333,9 @@ h2 {
   left: 700px;
   bottom: 30px;
 }
+
+
+
 
 
 .main-content-bg{
