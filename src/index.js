@@ -307,7 +307,7 @@ function creatureEncounterLogic(user, house, creature){
       event.preventDefault()
 
       spellDiv.innerHTML = ""
-      spellDiv.hidden = true
+      
       let spellImgTag = document.createElement("img")
       spellDiv.append(spellImgTag)
       mainContentDiv.append(spellDiv)
@@ -327,7 +327,7 @@ function creatureEncounterLogic(user, house, creature){
       function castSpell2(event, spell){
         event.currentTarget.remove()
         spellDiv.innerHTML = ""
-        spellDiv.hidden = true
+        
         let spellImgTag = document.createElement("img")
         spellDiv.append(spellImgTag)
         spellImgTag.src = spell.image
@@ -345,7 +345,7 @@ function creatureEncounterLogic(user, house, creature){
 
       function castSpell3(event, spell){
         spellDiv.innerHTML = ""
-        spellDiv.hidden = true
+       
         let spellImgTag = document.createElement("img")
         spellDiv.append(spellImgTag)
         mainContentDiv.append(spellDiv)
