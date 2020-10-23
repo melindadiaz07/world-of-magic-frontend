@@ -312,6 +312,7 @@ function creatureEncounterLogic(user, house, creature){
       spellDiv.append(spellImgTag)
       mainContentDiv.append(spellDiv)
       spellImgTag.src = spell.image
+      spellImgTag.classList.add(`spell-${spell.id}`)
 
         event.currentTarget.remove()
         let damage = event.target.dataset.damage
@@ -331,6 +332,7 @@ function creatureEncounterLogic(user, house, creature){
         let spellImgTag = document.createElement("img")
         spellDiv.append(spellImgTag)
         spellImgTag.src = spell.image
+        spellImgTag.classList.add(`spell-${spell.id}`)
 
         let damage = event.target.dataset.damage
         creatureHealth = creatureHealth - damage
@@ -350,6 +352,7 @@ function creatureEncounterLogic(user, house, creature){
         spellDiv.append(spellImgTag)
         mainContentDiv.append(spellDiv)
         spellImgTag.src = spell.image
+        spellImgTag.classList.add(`spell-${spell.id}`)
 
         let damage = event.target.dataset.damage
         creatureHealth = creatureHealth - damage

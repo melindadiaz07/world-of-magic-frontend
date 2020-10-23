@@ -564,70 +564,363 @@ h2 {
    font-family: boltfont;
  }
 
-#spell-1 {
-  position: relative;
-  right: 30%;
-  bottom: 30%px;
+.spell-1 {
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  top: 40%;
+  margin-top: -300px;
+  left: 94%;
+  margin-left: -600px;
 }
-#spell-2 {
-  position: relative;
-  right: 30%;
-  bottom: 30%px;
+.spell-2 {
+  position: absolute;
+  width: 62%;
+  height: 70%;
+  top: 55%;
+  margin-top: -300px;
+  left: 80%;
+  margin-left: -600px;
 }
-#spell-3 {
-  position: relative;
-  right: 30%;
-  bottom: 30%px;
+.spell-3 {
+  position: absolute;
+  width: 62%;
+  height: 70%;
+  top: 55%;
+  margin-top: -300px;
+  left: 80%;
+  margin-left: -600px;
 }
-#spell-4 {
-  position: relative;
-  right: 30%;
-  bottom: 30%px;
+.spell-4 {
+  position: absolute;
+  width: 45%;
+  height: 72%;
+  top: 47%;
+  margin-top: -300px;
+  left: 83%;
+  margin-left: -600px;
 }
-#spell-5 {
-  position: relative;
-  right: 30%;
-  bottom: 30%px;
+.spell-5 {
+  position: absolute;
+  width: 62%;
+  height: 70%;
+  top: 55%;
+  margin-top: -300px;
+  left: 80%;
+  margin-left: -600px;
 }
-#spell-6 {
-  position: relative;
-  right: 30%;
-  bottom: 30%px;
+.spell-6 {
+  position: absolute;
+  width: 45%;
+  height: 82%;
+  top: 55%;
+  margin-top: -300px;
+  left: 88%;
+  margin-left: -600px;
 }
-#spell-7 {
-  position: relative;
-  right: 30%;
-  bottom: 30%px;
+
+.spell-7 {
+  position: absolute;
+  width: 39%;
+  height: 58%;
+  top: 65%;
+  margin-top: -300px;
+  left: 98%;
+  margin-left: -600px;
 }
-#spell-8 {
-  position: relative;
-  right: 30%;
-  bottom: 30%px;
+.spell-8 {
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  top: 40%;
+  margin-top: -300px;
+  left: 94%;
+  margin-left: -600px;
 }
-#spell-9 {
-  position: relative;
-  right: 30%;
-  bottom: 30%px;
+.spell-9 {
+  position: absolute;
+  width: 35%;
+  height: 52%;
+  top: 61%;
+  margin-top: -300px;
+  left: 85%;
+  margin-left: -600px;
 }
-#spell-10 {
-  position: relative;
-  right: 30%;
-  bottom: 30%px;
+.spell-10 {
+  position: absolute;
+  width: 59%;
+  height: 90%;
+  top: 39%;
+  margin-top: -300px;
+  left: 84%;
+  margin-left: -600px;
 }
-#spell-11 {
-  position: relative;
-  right: 30%;
-  bottom: 30%px;
+.spell-11 {
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  top: 40%;
+  margin-top: -300px;
+  left: 94%;
+  margin-left: -600px;
 }
-#spell-12 {
-  position: relative;
-  right: 30%;
-  bottom: 30%px;
+.spell-12 {
+  position: absolute;
+  width: 62%;
+  height: 70%;
+  top: 55%;
+  margin-top: -300px;
+  left: 80%;
+  margin-left: -600px;
 }
-#spell-13 {
-  position: relative;
-  right: 30%;
-  bottom: 30%px;
+.spell-13 {
+  position: absolute;
+  width: 35%;
+  height: 80%;
+  top: 45%;
+  margin-top: -300px;
+  left: 91%;
+  margin-left: -600px;
+}
+
+.spell-14{
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  top: 40%;
+  margin-top: -300px;
+  left: 94%;
+  margin-left: -600px;
+}
+
+.spell-15{
+  position: absolute;
+  width: 39%;
+  height: 58%;
+  top: 65%;
+  margin-top: -300px;
+  left: 98%;
+  margin-left: -600px;
+}
+
+.spell-16{
+  position: absolute;
+  width: 45%;
+  height: 82%;
+  top: 55%;
+  margin-top: -300px;
+  left: 88%;
+  margin-left: -600px;
+}
+
+.spell-17{
+  position: absolute;
+  width: 45%;
+  height: 82%;
+  top: 55%;
+  margin-top: -300px;
+  left: 88%;
+  margin-left: -600px;
+}
+
+.spell-18{
+  position: absolute;
+  width: 62%;
+  height: 70%;
+  top: 55%;
+  margin-top: -300px;
+  left: 80%;
+  margin-left: -600px;
+}
+
+.spell-19{
+  position: absolute;
+  width: 59%;
+  height: 90%;
+  top: 39%;
+  margin-top: -300px;
+  left: 84%;
+  margin-left: -600px;
+}
+
+.spell-20{
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  top: 40%;
+  margin-top: -300px;
+  left: 94%;
+  margin-left: -600px;
+}
+
+.spell-21{
+  position: absolute;
+  width: 45%;
+  height: 82%;
+  top: 55%;
+  margin-top: -300px;
+  left: 88%;
+  margin-left: -600px;
+}
+
+.spell-22{
+  position: absolute;
+  width: 62%;
+  height: 70%;
+  top: 55%;
+  margin-top: -300px;
+  left: 80%;
+  margin-left: -600px;
+}
+
+.spell-23{
+  position: absolute;
+  width: 35%;
+  height: 52%;
+  top: 61%;
+  margin-top: -300px;
+  left: 85%;
+  margin-left: -600px;
+}
+
+.spell-24{
+  position: absolute;
+  width: 35%;
+  height: 52%;
+  top: 61%;
+  margin-top: -300px;
+  left: 85%;
+  margin-left: -600px;
+}
+
+.spell-25{
+  position: absolute;
+  width: 59%;
+  height: 90%;
+  top: 39%;
+  margin-top: -300px;
+  left: 84%;
+  margin-left: -600px;
+}
+
+.spell-26{
+  position: absolute;
+  width: 62%;
+  height: 70%;
+  top: 55%;
+  margin-top: -300px;
+  left: 80%;
+  margin-left: -600px;
+}
+
+.spell-27 {
+  position: absolute;
+  width: 35%;
+  height: 52%;
+  top: 61%;
+  margin-top: -300px;
+  left: 85%;
+  margin-left: -600px;
+}
+
+.spell-28 {
+  position: absolute;
+  width: 62%;
+  height: 70%;
+  top: 55%;
+  margin-top: -300px;
+  left: 80%;
+  margin-left: -600px;
+}
+
+.spell-29 {
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  top: 40%;
+  margin-top: -300px;
+  left: 94%;
+  margin-left: -600px;
+}
+
+.spell-30 {
+  position: absolute;
+  width: 45%;
+  height: 82%;
+  top: 55%;
+  margin-top: -300px;
+  left: 88%;
+  margin-left: -600px;
+}
+
+.spell-31 {
+  position: absolute;
+  width: 45%;
+  height: 72%;
+  top: 47%;
+  margin-top: -300px;
+  left: 83%;
+  margin-left: -600px;
+}
+
+.spell-32 {
+  position: absolute;
+  width: 35%;
+  height: 80%;
+  top: 45%;
+  margin-top: -300px;
+  left: 91%;
+  margin-left: -600px;
+}
+
+.spell-33 {
+  position: absolute;
+  width: 35%;
+  height: 80%;
+  top: 45%;
+  margin-top: -300px;
+  left: 91%;
+  margin-left: -600px;
+}
+
+.spell-34 {
+  position: absolute;
+  width: 35%;
+  height: 80%;
+  top: 45%;
+  margin-top: -300px;
+  left: 91%;
+  margin-left: -600px;
+}
+
+.spell-35 {
+  position: absolute;
+  width: 62%;
+  height: 70%;
+  top: 55%;
+  margin-top: -300px;
+  left: 80%;
+  margin-left: -600px;
+}
+
+.spell-36 {
+  position: absolute;
+  width: 40%;
+  height: 79%;
+  top: 55%;
+  margin-top: -300px;
+  left: 85%;
+  margin-left: -600px;
+}
+
+.spell-37 {
+  position: absolute;
+  width: 40%;
+  height: 79%;
+  top: 55%;
+  margin-top: -300px;
+  left: 85%;
+  margin-left: -600px;
 }
 
 
