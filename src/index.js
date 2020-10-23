@@ -132,7 +132,6 @@ function welcomeMessage(){
 }
 
 
-
 function renderEncounter(event, user, house){
   event.preventDefault()
   
@@ -145,9 +144,6 @@ function renderEncounter(event, user, house){
       newHousePoints = house.points
     })
   
-
-
-
   creatureWonButton.hidden = true
   userWonButton.hidden = true
   useMagicalItem.hidden = true
@@ -197,10 +193,8 @@ function renderEncounter(event, user, house){
 };
   
 
-
-
 function renderCreatureAndBackground(creature){
-  let randomBackground = Math.floor(Math.random()*7 +1)
+  let randomBackground = Math.floor(Math.random()*10 +1)
   mainContentImageDiv.id = `${creature.name}-image`
   bodyBackground.className = `background-${randomBackground}`
 
@@ -226,6 +220,15 @@ function renderCreatureAndBackground(creature){
       break;
     case 7:
       locationName = "the Great Hall"
+      break;
+    case 8: 
+      locationName = "the Potion Room"
+      break;
+    case 9:
+      locationName = "the Whomping Willow"
+      break;
+    case 10: 
+      locationName = "Hagrid's Hut"
   }
   mainContentMessage.innerText = `You found a ${creature.name} in ${locationName}`
 }
@@ -286,16 +289,13 @@ function creatureEncounterLogic(user, house, creature){
         spellUl.append(spellPTag)
         
         spellPTag.addEventListener('click', (event) => {
-
           if (turn == 1) {
-            
             castSpell1(event, spell)
           } else if (turn == 2){
             castSpell2(event, spell)
           } else {
             castSpell3(event, spell)
           }
-
         })
       })
     }
@@ -303,12 +303,11 @@ function creatureEncounterLogic(user, house, creature){
     
     function castSpell1(event, spell){
       event.preventDefault()
+
       spellDiv.innerHTML = ""
-      // spellDiv.classList.add(`spell-item-${spell.id}`)
       let spellImgTag = document.createElement("img")
       spellDiv.append(spellImgTag)
       mainContentDiv.append(spellDiv)
-  
       spellImgTag.src = spell.image
 
         event.currentTarget.remove()
@@ -325,13 +324,8 @@ function creatureEncounterLogic(user, house, creature){
       function castSpell2(event, spell){
         event.currentTarget.remove()
         spellDiv.innerHTML = ""
-  
-        // spellDiv.classList.add(`spell-item-${spell.id}`)
         let spellImgTag = document.createElement("img")
-
         spellDiv.append(spellImgTag)
-        // mainContentDiv.append(spellDiv)
-    
         spellImgTag.src = spell.image
 
         let damage = event.target.dataset.damage
@@ -347,13 +341,9 @@ function creatureEncounterLogic(user, house, creature){
 
       function castSpell3(event, spell){
         spellDiv.innerHTML = ""
-
-        // spellDiv.classList.add(`spell-item-${spell.id}`)
         let spellImgTag = document.createElement("img")
- 
         spellDiv.append(spellImgTag)
         mainContentDiv.append(spellDiv)
-    
         spellImgTag.src = spell.image
 
         let damage = event.target.dataset.damage
@@ -367,8 +357,6 @@ function creatureEncounterLogic(user, house, creature){
       }
     }
   
-
-
 
 function userWins(creature, house, user){
   
