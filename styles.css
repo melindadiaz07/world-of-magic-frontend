@@ -337,7 +337,7 @@ h2 {
 /* BACKGROUNDS */
 /* library background */
 .background-1 {
-  background-image: url("assets/images/library.jpg");
+  background-image: url("https://media2.giphy.com/media/Y0ynz2rzJh2Dkxlelp/giphy.gif");
    background-color: #bdb5b5;
    height: 100vh; 
    background-position: center;
@@ -351,7 +351,7 @@ h2 {
 
 /* pumpkin great hall */
 .background-2 {
-  background-image: url("assets/images/pumpkingreathall.jpg");
+  background-image: url("https://data.whicdn.com/images/321251201/original.gif");
    background-color: #bdb5b5;
    height: 100vh; 
    background-position: center;
@@ -404,7 +404,7 @@ h2 {
 }
 
 .background-6 {
-  background-image: url("assets/images/corridor.jpg");
+  background-image: url("https://data.whicdn.com/images/334420322/original.gif");
    background-color: #000000;
    height: 100vh; 
    background-position: center;
@@ -465,7 +465,87 @@ h2 {
    font-family: boltfont;
  }
 
+#spell-1 {
+  background-image: url("assets/spells/spell1.gif");
+  position: relative;
+  right: 30%;
+  bottom: 30%px;
+}
+#spell-2 {
+  background-image: url("assets/spells/spell2.gif");
+  position: relative;
+  right: 30%;
+  bottom: 30%px;
+}
+#spell-3 {
+  background-image: url("assets/spells/spell3.gif");
+  position: relative;
+  right: 30%;
+  bottom: 30%px;
+}
+#spell-4 {
+  background-image: url("assets/spells/spell4.gif");
+  position: relative;
+  right: 30%;
+  bottom: 30%px;
+}
+#spell-5 {
+  background-image: url("assets/spells/spell5.gif");
+  position: relative;
+  right: 30%;
+  bottom: 30%px;
+}
+#spell-6 {
+  background-image: url("assets/spells/spell6.gif");
+  position: relative;
+  right: 30%;
+  bottom: 30%px;
+}
+#spell-7 {
+  background-image: url("assets/spells/spell7.gif");
+  position: relative;
+  right: 30%;
+  bottom: 30%px;
+}
+#spell-8 {
+  background-image: url("assets/spells/spell8.gif");
+  position: relative;
+  right: 30%;
+  bottom: 30%px;
+}
+#spell-9 {
+  background-image: url("assets/spells/spell9.gif");
+  position: relative;
+  right: 30%;
+  bottom: 30%px;
+}
+#spell-10 {
+  background-image: url("assets/spells/spell10.gif");
+  position: relative;
+  right: 30%;
+  bottom: 30%px;
+}
+#spell-11 {
+  background-image: url("assets/spells/spell11.gif");
+  position: relative;
+  right: 30%;
+  bottom: 30%px;
+}
+#spell-12 {
+  background-image: url("assets/spells/spell2.gif");
+  position: relative;
+  right: 30%;
+  bottom: 30%px;
+}
+#spell-13 {
+  background-image: url("assets/spells/spell13.gif");
+  position: relative;
+  right: 30%;
+  bottom: 30%px;
+}
 
+
+/* new-user-form box */
  .new-user-name {
   padding: 0;
   height: 34px;
@@ -503,7 +583,7 @@ h2 {
 	border:2px solid #383838dc;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:lumosfont;
+	font-family:boltfont;
 	font-size:19px;
 	padding:10px 50px;
   text-decoration:none;
@@ -519,7 +599,23 @@ h2 {
 	border:2px solid #383838dc;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:lumosfont;
+	font-family:boltfont;
+	font-size:19px;
+	padding:10px 50px;
+  text-decoration:none;
+  position: absolute;
+  left: 33%;
+  top: 35%;
+  z-index: 3!important;
+ }
+
+ #hospital-wing-button{
+  background-color:#000702b7;
+	border-radius:5px;
+	border:2px solid #383838dc;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:boltfont;
 	font-size:19px;
 	padding:10px 50px;
   text-decoration:none;

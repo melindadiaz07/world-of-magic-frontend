@@ -209,7 +209,7 @@ function renderCreatureAndBackground(creature){
       locationName = "the Forbidden Forrest"
       break;
     case 6:
-      locationName = "the corridors"
+      locationName = "the Corridors"
       break;
     case 7:
       locationName = "the Great Hall"
@@ -464,3 +464,5 @@ function userDies(house, user){
   })
   
 }
+
+
