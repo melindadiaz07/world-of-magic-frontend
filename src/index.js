@@ -15,8 +15,8 @@ const useMagicalItem = document.querySelector('#use-magical-item')
 const hospitalWingButton = document.querySelector('#hospital-wing-button')
 let newHousePoints
 let creaturePoints
-
-
+let lastSpell = null
+let spellDiv = document.querySelector(".spell-image")
 
 document.addEventListener("DOMContentLoaded", () => {
   getHouses()
@@ -135,7 +135,7 @@ function welcomeMessage(){
 
 function renderEncounter(event, user, house){
   event.preventDefault()
-
+  
 
   let lives = user.lives
   
@@ -286,26 +286,34 @@ function creatureEncounterLogic(user, house, creature){
         spellUl.append(spellPTag)
         
         spellPTag.addEventListener('click', (event) => {
+
           if (turn == 1) {
-          castSpell1(event)
+            
+            castSpell1(event, spell)
           } else if (turn == 2){
-            castSpell2(event)
+            castSpell2(event, spell)
           } else {
-            castSpell3(event)
+            castSpell3(event, spell)
           }
+
         })
       })
     }
       
-
-  
-    function castSpell1(event){
+    
+    function castSpell1(event, spell){
       event.preventDefault()
-       
+      spellDiv.innerHTML = ""
+      // spellDiv.classList.add(`spell-item-${spell.id}`)
+      let spellImgTag = document.createElement("img")
+      spellDiv.append(spellImgTag)
+      mainContentDiv.append(spellDiv)
+  
+      spellImgTag.src = spell.image
+
         event.currentTarget.remove()
         let damage = event.target.dataset.damage
       creatureHealth = creatureHealth - damage
-
       if (creatureHealth < 0) {
         userWins(creature, house, user)
       } else {
@@ -314,8 +322,17 @@ function creatureEncounterLogic(user, house, creature){
         }
       }
 
-      function castSpell2(event){
+      function castSpell2(event, spell){
         event.currentTarget.remove()
+        spellDiv.innerHTML = ""
+  
+        // spellDiv.classList.add(`spell-item-${spell.id}`)
+        let spellImgTag = document.createElement("img")
+
+        spellDiv.append(spellImgTag)
+        // mainContentDiv.append(spellDiv)
+    
+        spellImgTag.src = spell.image
 
         let damage = event.target.dataset.damage
         creatureHealth = creatureHealth - damage
@@ -328,8 +345,17 @@ function creatureEncounterLogic(user, house, creature){
        }
       }
 
-      function castSpell3(event){
-        
+      function castSpell3(event, spell){
+        spellDiv.innerHTML = ""
+
+        // spellDiv.classList.add(`spell-item-${spell.id}`)
+        let spellImgTag = document.createElement("img")
+ 
+        spellDiv.append(spellImgTag)
+        mainContentDiv.append(spellDiv)
+    
+        spellImgTag.src = spell.image
+
         let damage = event.target.dataset.damage
         creatureHealth = creatureHealth - damage
         
@@ -345,8 +371,6 @@ function creatureEncounterLogic(user, house, creature){
 
 
 function userWins(creature, house, user){
-
-
   
   creaturePoints = creature.points
   newHousePoints = (creature.points)+(house.points)
@@ -362,7 +386,7 @@ function userWins(creature, house, user){
                                   back to the Forbidden Forrest. ${creature.points} points to ${house.name}`
 
   let housePointsText = document.querySelector(`#${house.name}-points`)
-  housePointsText.innerHTML = `Points: ${(creature.points)+(house.points)}<br><br><br><br><br>`                                 
+  housePointsText.innerHTML = `Points: ${(creature.points)+(house.points)}`                                 
 
  userWonButton.hidden = false
 
@@ -375,10 +399,10 @@ fetch(housesURL+`/${house.id}`, {
 })
 .then(houseData => {
   let housePointsText = document.querySelector(`#${house.name}-points`)
-  housePointsText.innerHTML = `Points: ${(creature.points)+(house.points)}<br><br><br><br><br>`
+  housePointsText.innerHTML = `Points: ${(creature.points)+(house.points)}`
 
+  spellDiv.innerHTML = ""
   userWonButton.addEventListener('click', (event) => {
-
   fetch(housesURL+`/${house.id}`)
   .then(res => res.json())
   .then(house => {
@@ -437,7 +461,7 @@ useMagicalItem.hidden = false
 useMagicalItem.style.zIndex = "2"
 useMagicalItem.src = itemSource
 
-   
+spellDiv.innerHTML = ""
   fetch(usersURL+`/${user.id}`, {
     method: 'PATCH',
     headers: {"Content-Type": "application/json"},
@@ -460,7 +484,7 @@ function userDies(house, user){
   if (lowerPoints < 0 ) {
     lowerPoints = 0
   }
-
+  spellDiv.innerHTML = ""
   fetch(usersURL+`/${user.id}`, {
     method: 'PATCH',
     headers: {"Content-Type": "application/json"},
