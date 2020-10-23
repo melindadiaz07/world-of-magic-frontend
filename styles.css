@@ -294,6 +294,47 @@ h2 {
   bottom: 30px;
 }
 
+#Occamy-image{
+  height: 200px;
+  content: url("assets/images/occamy.png");
+  position: absolute;
+  left: 700px;
+  bottom: 30px;
+}
+
+#Troll-image{
+  height: 500px;
+  content: url("assets/images/troll.png");
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+}
+
+#Hippogriff-image{
+  height: 500px;
+  content: url("assets/images/hippogriff2.png");
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+}
+
+#Kelpie-image{
+  height: 500px;
+  content: url("assets/images/kelpie.png");
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+}
+
+#Pixie-image{
+  height: 200px;
+  content: url("assets/images/cornishpixie.png");
+  position: absolute;
+  left: 700px;
+  bottom: 30px;
+}
+
+
 .main-content-bg{
   border: 10px solid transparent;
   background-image: url("https://i.pinimg.com/originals/fc/e4/29/fce4299099e5178be05f20abad84aed2.png");
